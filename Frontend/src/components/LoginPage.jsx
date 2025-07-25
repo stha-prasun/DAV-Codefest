@@ -190,7 +190,7 @@ export default function LoginPage() {
                     key={i}
                     className={`transition-all duration-300 ${
                       i === activeIndex
-                        ? "w-5 h-2 bg-[#2C2C33] rounded-full"
+                        ? "w-6 h-2 bg-[#2C2C33] rounded-full"
                         : "w-2 h-2 bg-[#BB5A00] rounded-full"
                     }`}
                   ></div>
