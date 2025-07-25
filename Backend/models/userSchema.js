@@ -16,9 +16,9 @@ const userModel = new mongoose.Schema(
       required: true,
     },
     isPremium: {
-        type: Boolean,
-        default: false
-    }
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
