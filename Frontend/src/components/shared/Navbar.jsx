@@ -124,18 +124,18 @@ const Navbar = () => {
 
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content text-white bg-gray-900 rounded-box z-50 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content text-white bg-gray-800 rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link to="/profile/:id" className="justify-between">
+                  <Link to="/profile/:id" className="justify-between hover:bg-gray-500">
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to="/membership/buy">Upgrade plan</Link>
+                  <Link to="/membership/buy" className="hover:bg-gray-500">Upgrade plan</Link>
                 </li>
                 <li>
-                  <Link to="/logout">Logout</Link>
+                  <Link to="/logout" className="hover:bg-gray-500">Logout</Link>
                 </li>
               </ul>
             </div>
