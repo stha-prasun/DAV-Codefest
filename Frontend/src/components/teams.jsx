@@ -22,7 +22,7 @@ const teamMembers = [
   {
     name: "Rohan Shrestha",
     role: "Full Stack Dev",
-    desc: "Rohan has a diverse skill set, working on both frontend and backend technologies. hello",
+    desc: "Rohan has a diverse skill set, working on both frontend and backend technologies.",
     image: "src/assets/Rohan_Team.JPG",
   },
   {
