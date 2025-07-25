@@ -15,7 +15,7 @@ export const admin_signup = async (req, res) => {
 
     const user = await Admin.find({ username });
 
-    if (user) {
+    if (!user) {
       return res.status(400).json({
         message: "User already exists",
         success: false,
