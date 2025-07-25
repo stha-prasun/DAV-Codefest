@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminPanel from "./components/admin/adminPanel";
 import Membership from "./components/Membership";
+import Profile from "./components/Profile";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -18,6 +19,10 @@ const App = () => {
     {
       path: "/membership/buy",
       element: <Membership />,
+    },
+    {
+      path: "/profile/:id",
+      element: <Profile />,
     },
     // Admin Part
     {
