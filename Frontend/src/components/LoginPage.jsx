@@ -1,10 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoPerson } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 
+const testimonials = [
+  {
+    name: "Cameron Williamson",
+    position: "Software Engineer / TechNova",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
+    feedback:
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended!",
+  },
+  {
+    name: "Sarah Kim",
+    position: "Frontend Developer / CodeCraft",
+    photo: "https://randomuser.me/api/portraits/women/44.jpg",
+    feedback:
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended",
+  },
+  {
+    name: "Rajesh Mehta",
+    position: "Backend Developer / DevSphere",
+    photo: "https://randomuser.me/api/portraits/men/76.jpg",
+    feedback:
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended",
+  },
+];
+
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex min-h-screen">
@@ -67,7 +99,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="example15@gmail.com"
-                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black"
+                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
                 required
               />
             </div>
@@ -78,7 +110,7 @@ export default function LoginPage() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
-                className="w-full px-3 py-2 pr-16 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black"
+                className="w-full px-3 py-2 pr-16 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
                 required
               />
               <button
@@ -118,7 +150,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Left side: Testimonials */}
+      {/* Left side: Testimonials slider */}
       <div className="w-[60%] py-2 pl-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
@@ -133,29 +165,36 @@ export default function LoginPage() {
             <h2 className="text-3xl font-serif font-medium mb-6 text-gray-900">
               Testimonials
             </h2>
-            <div className="p-2">
+            <div className="p-2 transition duration-500 ease-in-out">
               <div className="flex items-center mb-4">
                 <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  src={testimonials[activeIndex].photo}
                   alt="Avatar"
                   className="w-11 h-11 rounded-full mr-3 border-2 border-[#FFA463] shadow-sm"
                 />
               </div>
-              <p className="text-gray-700 font-sans text-left w-full">
-                "DSA Buddy has been a game-changer for mastering Java
-                algorithms. The platform is intuitive and makes complex concepts
-                easy to grasp. Highly recommended!"
+              <p className="text-gray-700 font-sans text-left w-full mb-4">
+                "{testimonials[activeIndex].feedback}"
               </p>
-              <div className="mt-4">
-                <p className="text-gray-900 font-medium text-left">
-                  Cameron Williamson
+              <div className="text-left">
+                <p className="text-gray-900 font-medium">
+                  {testimonials[activeIndex].name}
                 </p>
-                <p
-                  className="text-xs text-[#080A16] text-left"
-                  style={{ opacity: 0.6 }}
-                >
-                  Software Engineer / TechNova
+                <p className="text-xs text-[#080A16]" style={{ opacity: 0.6 }}>
+                  {testimonials[activeIndex].position}
                 </p>
+              </div>
+              <div className="flex justify-start mt-4 space-x-2">
+                {testimonials.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`transition-all duration-300 ${
+                      i === activeIndex
+                        ? "w-5 h-2 bg-[#2C2C33] rounded-full"
+                        : "w-2 h-2 bg-[#BB5A00] rounded-full"
+                    }`}
+                  ></div>
+                ))}
               </div>
             </div>
           </div>

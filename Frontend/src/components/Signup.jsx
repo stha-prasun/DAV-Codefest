@@ -1,11 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoPerson } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import { FaUserPlus, FaEnvelope, FaLock } from "react-icons/fa";
 
+const testimonials = [
+  {
+    name: "Cameron Williamson",
+    position: "Software Engineer / TechNova",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
+    feedback:
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended!",
+  },
+  {
+    name: "Sarah Kim",
+    position: "Frontend Developer / CodeCraft",
+    photo: "https://randomuser.me/api/portraits/women/44.jpg",
+    feedback:
+      "As someone new to DSA, this platform gave me structure, confidence, and real progress. Absolutely love it!",
+  },
+  {
+    name: "Rajesh Mehta",
+    position: "Backend Developer / DevSphere",
+    photo: "https://randomuser.me/api/portraits/men/76.jpg",
+    feedback:
+      "Learning Java DSA here was smooth. Clean explanations, hands-on problems, and constant motivation. Kudos to the team!",
+  },
+];
+
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 3000); // ⏱️ Auto-swiper every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex min-h-screen">
@@ -27,21 +59,33 @@ export default function Signup() {
             <div className="p-2">
               <div className="flex items-center mb-4">
                 <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  src={testimonials[activeIndex].photo}
                   alt="Avatar"
                   className="w-11 h-11 rounded-full mr-3 border-2 border-[#FFA463] shadow-sm"
                 />
               </div>
               <p className="text-gray-700 font-sans text-left w-full">
-                "DSA Buddy has been a game-changer for mastering Java
-                algorithms. The platform is intuitive and makes complex concepts
-                easy to grasp. Highly recommended!"
+                "{testimonials[activeIndex].feedback}"
               </p>
               <div className="mt-4 text-left">
-                <p className="text-gray-900 font-medium">Cameron Williamson</p>
-                <p className="text-xs text-[#080A16]" style={{ opacity: 0.6 }}>
-                  Software Engineer / TechNova
+                <p className="text-gray-900 font-medium">
+                  {testimonials[activeIndex].name}
                 </p>
+                <p className="text-xs text-[#080A16]" style={{ opacity: 0.6 }}>
+                  {testimonials[activeIndex].position}
+                </p>
+              </div>
+              <div className="flex justify-start mt-4 space-x-2">
+                {testimonials.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`transition-all duration-300 ${
+                      i === activeIndex
+                        ? "w-5 h-2 bg-[#2C2C33] rounded-full"
+                        : "w-2 h-2 bg-[#BB5A00] rounded-full"
+                    }`}
+                  ></div>
+                ))}
               </div>
             </div>
           </div>
@@ -66,9 +110,6 @@ export default function Signup() {
                 <button
                   type="button"
                   className="px-4 py-[4px] text-sm font-medium text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 transition"
-                  onClick={() => {
-                    console.log("Login button clicked");
-                  }}
                 >
                   Login
                 </button>
@@ -76,7 +117,7 @@ export default function Signup() {
             </div>
           </div>
         </div>
-        
+
         <div className="flex flex-col justify-center items-center flex-grow">
           <div className="mb-7">
             <div
@@ -175,15 +216,13 @@ export default function Signup() {
             </button>
           </form>
         </div>
+
         {/* Back Button aligned with logo */}
         <div className="mt-9">
           <Link to="/">
             <button
               type="button"
               className="flex items-center text-gray-500 hover:text-gray-700 text-base font-normal"
-              onClick={() => {
-                console.log("Back button clicked");
-              }}
             >
               <span className="mr-1 text-xl">
                 <TbArrowBackUp />
