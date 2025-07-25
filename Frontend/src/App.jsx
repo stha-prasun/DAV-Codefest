@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import AdminMessage from "./components/admin/AdminMessage";
 import AdminPanel from "./components/admin/AdminPanel";
 import ContactMentor from "./components/ContactMentor";
+import UserPanel from "./components/UserPanel";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -39,6 +40,10 @@ const App = () => {
     {
       path: "/contact/mentor",
       element: <ContactMentor />,
+    },
+    {
+      path: "/user/home",
+      element: <UserPanel />,
     },
     // Admin Part
     {
