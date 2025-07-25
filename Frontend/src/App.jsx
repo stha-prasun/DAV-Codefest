@@ -2,11 +2,13 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
-import AdminPanel from "./components/admin/adminPanel";
 import Membership from "./components/Membership";
 import Profile from "./components/Profile";
 import Course from "./components/Course";
 import Signup from "./components/Signup";
+import AdminMessage from "./components/admin/AdminMessage";
+import AdminPanel from "./components/admin/AdminPanel";
+import ContactMentor from "./components/ContactMentor";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -34,10 +36,18 @@ const App = () => {
       path: "/course/:id",
       element: <Course />,
     },
+    {
+      path: "/contact/mentor",
+      element: <ContactMentor />,
+    },
     // Admin Part
     {
       path: "/admin/home",
       element: <AdminPanel />,
+    },
+    {
+      path: "/admin/messages",
+      element: <AdminMessage />,
     },
   ]);
   return (
