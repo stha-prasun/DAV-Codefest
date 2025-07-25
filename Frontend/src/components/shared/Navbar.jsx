@@ -1,14 +1,131 @@
 import React from "react";
+import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li className="text-2xl">Home</li>
-          <li className="text-2xl">About</li>
-          <li className="text-2xl btn btn-primary">Contact</li>
+      {/* 
+    <nav className="bg-cover bg-center text-white" aria-label="Main Navigation">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px]">
+        <div className="flex items-center gap-2">
+          <img
+            src="././src/assets/logo.png"
+            alt="Company Logo"
+            className="h-10 w-auto"
+          />
+          <p className="text-2xl font-medium">DsaBuddy</p>
+        </div>
+
+        <ul className="hidden md:flex gap-6 list-none m-0 p-0">
+          <li>
+            <a
+              href="#home"
+              className="hover:text-gray-300 transition-colors font-normal"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="#product"
+              className="hover:text-gray-300 transition-colors font-normal"
+            >
+              Product
+            </a>
+          </li>
+          <li>
+            <a
+              href="#pricing"
+              className="hover:text-gray-300 transition-colors font-normal"
+            >
+              Pricing
+            </a>
+          </li>
         </ul>
+        <div>
+          <button className="bg-white hover:text-white hover:bg-[#080A16] text-blue-950 font-medium py-[4px] px-[24px] rounded-3xl transition-colors flex justify-center items-center text-center w-fit group">
+            <span className="w-full text-center text-[16px] font-medium transition-transform duration-300 group-hover:-translate-y-0.5">
+              Get Started
+            </span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    */}
+
+      <nav
+        className="bg-cover bg-center text-white"
+        aria-label="Main Navigation"
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px] px-1">
+          {/* Logo Section */}
+          <div className="flex items-center gap-2">
+            <Link to="/">
+              <img
+                src="././src/assets/logo.png"
+                alt="Company Logo"
+                className="h-10 w-auto"
+              />
+              <p className="text-2xl font-medium cursor-pointer">DsaBuddy</p>
+            </Link>
+          </div>
+
+          {/* Navigation Links */}
+          <ul className="hidden md:flex gap-6 list-none m-0 p-0">
+            <li>
+              <a
+                href="#home"
+                className="hover:text-gray-300 transition-colors font-normal"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#product"
+                className="hover:text-gray-300 transition-colors font-normal"
+              >
+                Product
+              </a>
+            </li>
+          </ul>
+
+          {/* Button + User Profile */}
+          <div className="flex items-center gap-4">
+            {/* User Profile Dropdown */}
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="User Avatar"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 text-white rounded-box z-50 mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a>Upgrade plan</a>
+                </li>
+                <li>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </nav>
     </>
   );
