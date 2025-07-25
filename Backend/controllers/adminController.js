@@ -97,3 +97,14 @@ export const admin_login = async (req, res) => {
     console.log(error);
   }
 };
+
+export const admin_logout = async (req, res) => {
+  try {
+    return res.status(201).cookie("token", "", { maxAge: 0 }).json({
+      message: "Logged out successfully!!",
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
