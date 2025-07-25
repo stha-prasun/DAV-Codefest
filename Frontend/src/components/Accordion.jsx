@@ -3,7 +3,7 @@ import React from "react";
 const Accordion = () => {
   return (
     <>
-      <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+      <div className="collapse collapse-arrow bg-white/30 backdrop-blur-lg border border-gray-100 shadow-lg">
         <input type="radio" name="my-accordion-2" defaultChecked />
         <div className="collapse-title font-semibold">
           How do I create an account?
@@ -13,7 +13,7 @@ const Accordion = () => {
           registration process.
         </div>
       </div>
-      <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+      <div className="collapse collapse-arrow bg-white/30 backdrop-blur-lg border border-gray-100 shadow-lg">
         <input type="radio" name="my-accordion-2" />
         <div className="collapse-title font-semibold">
           I forgot my password. What should I do?
@@ -23,7 +23,7 @@ const Accordion = () => {
           instructions sent to your email.
         </div>
       </div>
-      <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+      <div className="collapse collapse-arrow bg-white/30 backdrop-blur-lg border border-gray-100 shadow-lg">
         <input type="radio" name="my-accordion-2" />
         <div className="collapse-title font-semibold">
           How do I update my profile information?

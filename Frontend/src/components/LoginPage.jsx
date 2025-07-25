@@ -1,27 +1,20 @@
 import React from "react";
-
+import { GoPerson } from "react-icons/go";
 export default function LoginPage() {
   return (
     <div className="flex min-h-screen">
-      {/* Left Side - Login Form */}
       <div className="flex flex-col justify-center items-center w-[40%] p-12 bg-white">
         <div className="mb-6">
-          <div className="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center relative">
-            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center border border-gray-200 shadow-inner">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6 text-gray-700"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 18a3.75 3.75 0 00-7.5 0m7.5 0A3.75 3.75 0 0112 21.75m3.75-3.75H8.25m7.5 0a6 6 0 00-12 0m12 0a6 6 0 01-12 0m12 0V6.75A3.75 3.75 0 0012 3a3.75 3.75 0 00-3.75 3.75v11.25"
-                />
-              </svg>
+          <div
+            className="w-24 h-24 rounded-full flex items-center justify-center"
+            style={{
+              background: "radial-gradient(circle, #ffffff 40%, #e6e4e4 100%)",
+              boxShadow:
+                "inset -10px -10px 30px rgba(255,255,255,0.9), 10px 10px 30px rgba(0,0,0,0.1)",
+            }}
+          >
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
+              <GoPerson className="w-9 h-9 text-gray-900" />
             </div>
           </div>
         </div>
@@ -65,8 +58,6 @@ export default function LoginPage() {
           </a>
         </div>
       </div>
-
-      {/* Right Side - Testimonial */}
       <div className="w-[60%] py-2 px-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
