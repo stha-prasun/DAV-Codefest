@@ -9,13 +9,15 @@ const Navbar = () => {
     <nav className="bg-cover bg-center text-white" aria-label="Main Navigation">
       <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px]">
         <div className="flex items-center gap-2">
-          <img
-            src="././src/assets/logo.png"
-            alt="Company Logo"
-            className="h-10 w-auto"
-          />
-          <p className="text-2xl font-medium">DsaBuddy</p>
-        </div>
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="././src/assets/logo.png"
+                alt="Company Logo"
+                className="h-10 w-auto"
+              />
+              <span className="text-2xl font-medium cursor-pointer">DsaBuddy</span>
+            </Link>
+          </div>
 
         <ul className="hidden md:flex gap-6 list-none m-0 p-0">
           <li>
@@ -32,14 +34,6 @@ const Navbar = () => {
               className="hover:text-gray-300 transition-colors font-normal"
             >
               Product
-            </a>
-          </li>
-          <li>
-            <a
-              href="#pricing"
-              className="hover:text-gray-300 transition-colors font-normal"
-            >
-              Pricing
             </a>
           </li>
         </ul>
@@ -61,17 +55,17 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px] px-1">
           {/* Logo Section */}
           <div className="flex items-center gap-2">
-            <Link to="/">
+            <Link to="/" className="flex items-center gap-2">
               <img
                 src="././src/assets/logo.png"
                 alt="Company Logo"
                 className="h-10 w-auto"
               />
-              <p className="text-2xl font-medium cursor-pointer">DsaBuddy</p>
+              <span className="text-2xl font-medium cursor-pointer">
+                DsaBuddy
+              </span>
             </Link>
           </div>
-
-          {/* Navigation Links */}
           <ul className="hidden md:flex gap-6 list-none m-0 p-0">
             <li>
               <a
@@ -112,9 +106,7 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 text-white rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                  </a>
+                  <a className="justify-between">Profile</a>
                 </li>
                 <li>
                   <a>Upgrade plan</a>
