@@ -12,6 +12,7 @@ import ContactMentor from "./components/ContactMentor";
 import UserPanel from "./components/UserPanel";
 import Dsa from "./components/DSA";
 import Demo from "./components/Demo";
+import About from "./components/About";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -54,6 +55,10 @@ const App = () => {
     {
       path: "/demo",
       element: <Demo />,
+    },
+    {
+      path: "/about",
+      element: <About />,
     },
     // Admin Part
     {
