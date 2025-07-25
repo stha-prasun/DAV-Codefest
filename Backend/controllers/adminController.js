@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { Admin } from "../models/adminSchema.js";
 //import jwt from "jsonwebtoken";
 
-export const signup = async (req, res) => {
+export const admin_signup = async (req, res) => {
   try {
     const { username, password } = req.body;
 
