@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <nav
+      {/* <nav
         className="bg-cover bg-center text-white"
         aria-label="Main Navigation"
       >
@@ -26,7 +26,7 @@ const Navbar = () => {
           <ul className="hidden md:flex gap-6 list-none m-0 p-0">
             <li>
               <Link
-                to="#home"
+                to="/"
                 className="hover:text-gray-300 transition-colors font-normal"
               >
                 Home
@@ -59,9 +59,9 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
-      {/* <nav
+      <nav
         className="bg-cover bg-center text-white"
         aria-label="Main Navigation"
       >
@@ -81,7 +81,7 @@ const Navbar = () => {
           <ul className="hidden md:flex gap-6 list-none m-0 p-0">
             <li>
               <Link
-                to="#home"
+                to="/"
                 className="hover:text-gray-300 transition-colors font-normal"
               >
                 Home
@@ -97,10 +97,10 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#about"
+                to="/about"
                 className="hover:text-gray-300 transition-colors font-normal"
               >
-                About Us
+                About
               </Link>
             </li>
           </ul>
@@ -127,7 +127,9 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 text-white rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link to="/Profile" className="justify-between">Profile</Link>
+                  <Link to="/profile/:id" className="justify-between">
+                    Profile
+                  </Link>
                 </li>
                 <li>
                   <Link to="/UpgradePlan">Upgrade plan</Link>
@@ -139,7 +141,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </nav> */}
+      </nav>
     </>
   );
 };
