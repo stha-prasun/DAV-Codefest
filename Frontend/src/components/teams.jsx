@@ -22,7 +22,7 @@ const teamMembers = [
   {
     name: "Rohan Shrestha",
     role: "Full Stack Dev",
-    desc: "Rohan has a diverse skill set, working on both frontend and backend technologies.",
+    desc: "Rohan has a diverse skill set, working on both frontend and backend technologies. hello",
     image: "src/assets/Rohan_Team.JPG",
   },
   {
@@ -44,8 +44,9 @@ const Teams = () => {
           Our Teams
         </h1>
         <p className="text-lg text-gray-700 mb-15 max-w-2xl mx-auto">
-          Meet the talented individuals behind <span className="font-medium">DsaBuddy</span>,
-          dedicated to helping you master Data Structures and Algorithms.
+          Meet the talented individuals behind{" "}
+          <span className="font-medium">DsaBuddy</span>, dedicated to helping
+          you master Data Structures and Algorithms.
         </p>
 
         {/* First Row: 3 cards */}
@@ -88,6 +89,5 @@ const TeamCard = ({ member }) => (
     </span>
   </div>
 );
-
 
 export default Teams;
