@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import Logo from "../../assets/logo.png";
 const Navbar = () => {
   return (
     <>
@@ -69,7 +69,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src="././src/assets/logo.png"
+                src={Logo}
                 alt="Company Logo"
                 className="h-10 w-auto"
               />
@@ -132,7 +132,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/UpgradePlan">Upgrade plan</Link>
+                  <Link to="/membership/buy">Upgrade plan</Link>
                 </li>
                 <li>
                   <Link to="/logout">Logout</Link>

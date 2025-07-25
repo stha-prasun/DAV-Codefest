@@ -78,6 +78,7 @@ const App = () => {
       path: "/admin/course/add",
       element: <AddCourseForm />,
     },
+
   ]);
   return (
     <div>

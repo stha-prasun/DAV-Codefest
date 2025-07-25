@@ -22,7 +22,7 @@ const UserSidebar = () => {
             className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
           >
             <BookOpen className="w-5 h-5" />
-            <span>Add Courses</span>
+            <span>Add Questions</span>
           </Link>
 
           <Link
