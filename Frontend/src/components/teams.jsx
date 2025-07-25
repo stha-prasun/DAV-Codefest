@@ -89,4 +89,5 @@ const TeamCard = ({ member }) => (
   </div>
 );
 
+
 export default Teams;
