@@ -8,7 +8,7 @@ export const admin_signup = async (req, res) => {
 
     if (!username || !password) {
       return res.status(400).json({
-        message: "Please provide username and password",
+        message: "All Fields Required",
         success: false,
       });
     }
@@ -25,7 +25,7 @@ export const admin_signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await Admin.create({
-      email,
+      username,
       password: hashedPassword,
     });
 
