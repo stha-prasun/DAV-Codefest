@@ -2,9 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import connectDB from "./config/database.js"
+import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import adminRoute from "./routes/adminRoute.js";
+import questionRoute from "./routes/questionRoute.js";
+import messageRoute from "./routes/messageRoute.js";
 
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -24,6 +26,8 @@ app.use(cookieParser());
 //Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/admin", adminRoute);
+app.use("/api/v1/question", questionRoute);
+app.use("/api/v1/message", messageRoute);
 
 app.listen(port, () => {
   connectDB();

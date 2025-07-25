@@ -6,6 +6,10 @@ const questionModel = new mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
     difficulty: {
       type: String,
       enum: ["Easy", "Medium", "Hard"],
