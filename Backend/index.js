@@ -25,7 +25,7 @@ app.use(cookieParser());
 //Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/admin", adminRoute);
-app.use("/api/v1/admin", questionRoute);
+app.use("/api/v1/question", questionRoute);
 
 app.listen(port, () => {
   connectDB();
