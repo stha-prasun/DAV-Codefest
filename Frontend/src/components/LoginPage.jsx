@@ -119,7 +119,7 @@ export default function LoginPage() {
       </div>
 
       {/* Left side: Testimonials */}
-      <div className="w-[60%] py-2 px-2 bg-white">
+      <div className="w-[60%] py-2 pl-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
           style={{
