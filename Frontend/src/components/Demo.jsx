@@ -5,7 +5,7 @@ import Footer from "./shared/Footer";
 
 const Demo = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-[#080A16]">
       <Navbar />
       <div className="p-6 min-h-screen bg-[#f8f8f8] flex flex-col">
         <div className="flex gap-6 flex-grow h-full">
