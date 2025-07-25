@@ -2,9 +2,48 @@ import React from "react";
 import { GoPerson } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
-export default function LoginPage() {
+export default function Signup() {
   return (
     <div className="flex min-h-screen">
+      {/* Left side: testimonial */}
+      <div className="w-[60%] py-2 px-2 bg-white">
+        <div
+          className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
+          style={{
+            backgroundImage: "url('././src/assets/login-background.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            padding: "2rem",
+          }}
+        >
+          <div className="max-w-md text-center p-8">
+            <h2 className="text-3xl font-serif font-medium mb-6 text-gray-900">
+              Testimonials
+            </h2>
+            <div className="p-2">
+              <div className="flex items-center mb-4">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Avatar"
+                  className="w-11 h-11 rounded-full mr-3 border-2 border-[#FFA463] shadow-sm"
+                />
+              </div>
+              <p className="text-gray-700 font-sans text-left w-full">
+                "DSA Buddy has been a game-changer for mastering Java
+                algorithms. The platform is intuitive and makes complex concepts
+                easy to grasp. Highly recommended!"
+              </p>
+              <div className="mt-4 text-left">
+                <p className="text-gray-900 font-medium">Cameron Williamson</p>
+                <p className="text-xs text-[#080A16]" style={{ opacity: 0.6 }}>
+                  Software Engineer / TechNova
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Right side: login */}
       <div className="flex flex-col w-[40%] px-12 py-8 bg-white">
         {/* Top Register link */}
@@ -50,9 +89,9 @@ export default function LoginPage() {
             </div>
           </div>
           <div className="mb-2 text-4xl font-semibold text-center text-black">
-            Log into your account
+            signup into your account
           </div>
-          <p className="text-[#656565] mb-10">Enter your login details.</p>
+          <p className="text-[#656565] mb-10">Enter your signupin details.</p>
 
           <form className="w-full max-w-sm">
             <div className="mb-4">
@@ -94,54 +133,9 @@ export default function LoginPage() {
                 console.log("Back button clicked");
               }}
             >
-              <span className="mr-1 text-xl">
-                <TbArrowBackUp />
-              </span>{" "}
-              Back
+              <span className="mr-1 text-xl"><TbArrowBackUp /></span> Back
             </button>
           </Link>
-        </div>
-      </div>
-      <div className="w-[60%] py-2 px-2 bg-white">
-        <div
-          className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
-          style={{
-            backgroundImage: "url('././src/assets/login-background.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            padding: "2rem",
-          }}
-        >
-          <div className="max-w-md text-center p-8">
-            <h2 className="text-3xl font-serif font-medium mb-6 text-gray-900">
-              Testimonials
-            </h2>
-            <div className="p-2">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
-                  alt="Avatar"
-                  className="w-11 h-11 rounded-full mr-3 border-2 border-[#FFA463] shadow-sm"
-                />
-              </div>
-              <p className="text-gray-700 font-sans text-left w-full">
-                "DSA Buddy has been a game-changer for mastering Java
-                algorithms. The platform is intuitive and makes complex concepts
-                easy to grasp. Highly recommended!"
-              </p>
-              <div className="mt-4">
-                <p className="text-gray-900 font-medium text-left">
-                  Cameron Williamson
-                </p>
-                <p
-                  className="text-xs text-[#080A16] text-left"
-                  style={{ opacity: 0.6 }}
-                >
-                  Software Engineer / TechNova
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

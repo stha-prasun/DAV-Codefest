@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "./shared/Navbar";
 import Faq from "./Faq";
-import Teams from "./teams";
 import Footer from "./shared/Footer";
+import { Link } from "react-router-dom";
+import Teams from "./teams";
 const HomePage = () => {
   return (
     <>
@@ -31,9 +32,11 @@ const HomePage = () => {
                 mastering Data Structures & Algorithms in Java.
               </p>
               <div className="group">
+                <Link to="/signup">
                 <button className="px-6 py-2 rounded-full bg-white/30 backdrop-blur-md text-gray-800 font-medium shadow-md hover:text-white hover:bg-[#080A16] transition-all">
                   <span className="">Sign up for free</span>
                 </button>
+                </Link>
               </div>
             </div>
           </section>
