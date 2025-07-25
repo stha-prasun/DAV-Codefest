@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoPerson } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
+import { FaUserPlus, FaEnvelope, FaLock } from "react-icons/fa";
+
 export default function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="flex min-h-screen">
       {/* Left side: testimonial */}
-      <div className="w-[60%] py-2 px-2 bg-white">
+      <div className="w-[60%] py-2 pr-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
           style={{
@@ -55,18 +59,20 @@ export default function Signup() {
           />
           <div className="flex items-center">
             <span className="text-sm text-gray-600 mr-2">
-              Don’t have an account?
+              Already have an account?
             </span>
             <div className="flex justify-center">
-              <button
-                type="button"
-                className="px-4 py-[4px] text-sm font-medium text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 transition"
-                onClick={() => {
-                  console.log("Register button clicked");
-                }}
-              >
-                Register
-              </button>
+              <Link to="/login">
+                <button
+                  type="button"
+                  className="px-4 py-[4px] text-sm font-medium text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 transition"
+                  onClick={() => {
+                    console.log("Login button clicked");
+                  }}
+                >
+                  Login
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -88,41 +94,81 @@ export default function Signup() {
               </div>
             </div>
           </div>
-          <div className="mb-2 text-4xl font-semibold text-center text-black">
-            signup into your account
+          <div className="mb-8 text-4xl font-semibold text-center text-black">
+            Create your account
           </div>
-          <p className="text-[#656565] mb-10">Enter your signupin details.</p>
-
-          <form className="w-full max-w-sm">
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email Address*
-              </label>
-              <input
-                type="email"
-                placeholder="example15@gmail.com"
-                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300"
-                required
-              />
+          <form className="p-8 rounded-lg w-full max-w-md space-y-5">
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  First name
+                </label>
+                <div className="flex items-center border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black px-3 py-2">
+                  <FaUserPlus className="text-gray-400 mr-2" />
+                  <input
+                    type="text"
+                    placeholder="john"
+                    className="outline-none w-full bg-transparent border-gray-300 text-black"
+                  />
+                </div>
+              </div>
+              <div className="w-1/2">
+                <label className="block text-sm font-medium text-gray-400 mb-1">
+                  Last name
+                </label>
+                <div className="flex items-center border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black px-3 py-2">
+                  <FaUserPlus className="text-gray-400 mr-2" />
+                  <input
+                    type="text"
+                    placeholder="doe"
+                    className="outline-none w-full bg-transparent border-gray-300 text-black"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="mb-6">
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email Address<span className="text-red-500">*</span>
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black px-3 py-2">
+                <FaEnvelope className="text-gray-400 mr-2" />
+                <input
+                  type="email"
+                  placeholder="example415@gmail.com"
+                  className="outline-none w-full bg-transparent border-gray-300 text-black"
+                />
+              </div>
+            </div>
+
+            <div className="mb-6 relative">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Password*
               </label>
               <input
-                type="password"
-                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                className="w-full px-3 py-2 pr-16 border border-gray-300 rounded-md shadow-sm  focus:ring text-black"
                 required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-9 text-sm text-gray-500 hover:text-gray-700 "
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
             </div>
+
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-black text-white rounded-md hover:bg-gray-800"
+              className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition"
             >
-              Login
+              Sign up
             </button>
           </form>
         </div>
+
         {/* Back Button aligned with logo */}
         <div className="mt-9">
           <Link to="/">
@@ -133,7 +179,10 @@ export default function Signup() {
                 console.log("Back button clicked");
               }}
             >
-              <span className="mr-1 text-xl"><TbArrowBackUp /></span> Back
+              <span className="mr-1 text-xl">
+                <TbArrowBackUp />
+              </span>{" "}
+              Back
             </button>
           </Link>
         </div>
