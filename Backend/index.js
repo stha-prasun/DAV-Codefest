@@ -8,6 +8,7 @@ import adminRoute from "./routes/adminRoute.js";
 import questionRoute from "./routes/questionRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import courseRoute from "./routes/courseRoute.js";
+import aiRoute from "./routes/ai.route.js";
 
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -30,6 +31,7 @@ app.use("/api/v1/admin", adminRoute);
 app.use("/api/v1/question", questionRoute);
 app.use("/api/v1/message", messageRoute);
 app.use("/api/v1/course", courseRoute);
+app.use("/api/v1/ai", aiRoute);
 
 app.listen(port, () => {
   connectDB();

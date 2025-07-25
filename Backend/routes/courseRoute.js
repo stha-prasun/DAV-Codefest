@@ -7,8 +7,8 @@ router.route("/get/all").get(getAllCourses);
 
 router.route("/add").post(addCourse);
 
-router.route("/delete").post(deleteCourse);
+router.route("/delete").delete(deleteCourse);
 
-router.route("/update").post(updateCourse);
+router.route("/update").put(updateCourse);
 
 export default router;
