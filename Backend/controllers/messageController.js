@@ -47,3 +47,36 @@ export const newMessage = async (req, res) => {
     });
   }
 };
+
+export const MarkAsComplete = async (req, res)=>{
+  try {
+    const {id} = req.body;
+
+    if(!id){
+      return res.status(400).json({
+        message:"Id Required",
+        success: false
+      })
+    }
+
+    const message = await Message.findById(id);
+
+    if(!message){
+      return res.status(400).json({
+        message: "No Message Found",
+        success: false
+      })
+    }
+
+    message.isSolved = true;
+    await message.save();
+
+    return res.status(200).json({
+      message: "Marked As Completed",
+      success: true,
+      message
+    })
+  } catch (error) {
+    console.log(error);
+  }
+}

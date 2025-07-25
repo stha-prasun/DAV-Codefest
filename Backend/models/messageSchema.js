@@ -11,6 +11,10 @@ const messageSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    isSolved: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 );
