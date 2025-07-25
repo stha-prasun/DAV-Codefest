@@ -3,7 +3,7 @@ import { getAllMessages, newMessage } from "../controllers/messageController.js"
 
 const router = express.Router();
 
-router.route("/get/all").post(getAllMessages);
+router.route("/get/all").get(getAllMessages);
 
 router.route("/new").post(newMessage);
 
