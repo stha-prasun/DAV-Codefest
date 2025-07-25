@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage";
 import AdminPanel from "./components/admin/adminPanel";
 import Membership from "./components/Membership";
 import Profile from "./components/Profile";
+import Course from "./components/Course";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -23,6 +24,10 @@ const App = () => {
     {
       path: "/profile/:id",
       element: <Profile />,
+    },
+    {
+      path: "/course/:id",
+      element: <Course />,
     },
     // Admin Part
     {
