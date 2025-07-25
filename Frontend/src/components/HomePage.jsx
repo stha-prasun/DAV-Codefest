@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar  from "./shared/Navbar";
 import Footer from "./shared/Footer";
+import Faq from "./Faq";
 const HomePage = () => {
   return (
     <div
@@ -37,6 +38,7 @@ const HomePage = () => {
           </div>
         </section>
       </div>
+      <Faq />
       <Footer />
     </div>
   );
