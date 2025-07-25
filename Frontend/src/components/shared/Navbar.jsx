@@ -42,10 +42,10 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#about"
+                to="/about"
                 className="hover:text-gray-300 transition-colors font-normal"
               >
-                About Us
+                About
               </Link>
             </li>
           </ul>
