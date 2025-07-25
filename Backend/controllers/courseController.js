@@ -101,8 +101,8 @@ export const updateCourse = async (req, res) => {
     course.subtitle = subtitle || course.subtitle;
     course.overview = overview || course.overview;
     course.faq = faq || course.faq;
-    course.course_details = course_details || course.course_details;
-    
+    course.details = details || course.details;
+
     const updatedCourse = await course.save();
 
     return res.status(200).json({
