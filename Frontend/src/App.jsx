@@ -13,6 +13,7 @@ import UserPanel from "./components/UserPanel";
 import Dsa from "./components/DSA";
 import Demo from "./components/Demo";
 import About from "./components/About"; 
+import AddCourseForm from "./components/admin/AddCourseForm";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -68,6 +69,10 @@ const App = () => {
     {
       path: "/admin/messages",
       element: <AdminMessage />,
+    },
+    {
+      path: "/admin/course/add",
+      element: <AddCourseForm />,
     },
   ]);
   return (
