@@ -89,7 +89,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#product"
+                to="/demo"
                 className="hover:text-gray-300 transition-colors font-normal"
               >
                 Product
@@ -135,7 +135,7 @@ const Navbar = () => {
                   <Link to="/UpgradePlan">Upgrade plan</Link>
                 </li>
                 <li>
-                  <Link to="/Logout">Logout</Link>
+                  <Link to="/logout">Logout</Link>
                 </li>
               </ul>
             </div>

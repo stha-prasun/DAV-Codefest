@@ -34,7 +34,7 @@ const App = () => {
       element: <Membership />,
     },
     {
-      path: "/profile ",
+      path: "/profile/:id",
       element: <Profile />,
     },
     {
@@ -60,6 +60,10 @@ const App = () => {
     {
       path: "/about",
       element: <About />,
+    },
+    {
+      path: "/demo",
+      element: <Demo />,
     },
     // Admin Part
     {
