@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import AdminPanel from "./components/admin/adminPanel";
+import Membership from "./components/Membership";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -13,6 +14,10 @@ const App = () => {
     {
       path: "/login",
       element: <LoginPage />,
+    },
+    {
+      path: "/membership/buy",
+      element: <Membership />,
     },
     // Admin Part
     {
