@@ -1,5 +1,7 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <>
@@ -59,12 +61,14 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px] px-1">
           {/* Logo Section */}
           <div className="flex items-center gap-2">
-            <img
-              src="././src/assets/logo.png"
-              alt="Company Logo"
-              className="h-10 w-auto"
-            />
-            <p className="text-2xl font-medium">DsaBuddy</p>
+            <Link to="/">
+              <img
+                src="././src/assets/logo.png"
+                alt="Company Logo"
+                className="h-10 w-auto"
+              />
+              <p className="text-2xl font-medium cursor-pointer">DsaBuddy</p>
+            </Link>
           </div>
 
           {/* Navigation Links */}
@@ -83,14 +87,6 @@ const Navbar = () => {
                 className="hover:text-gray-300 transition-colors font-normal"
               >
                 Product
-              </a>
-            </li>
-            <li>
-              <a
-                href="#pricing"
-                className="hover:text-gray-300 transition-colors font-normal"
-              >
-                Pricing
               </a>
             </li>
           </ul>
@@ -118,11 +114,10 @@ const Navbar = () => {
                 <li>
                   <a className="justify-between">
                     Profile
-                    <span className="badge">New</span>
                   </a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a>Upgrade plan</a>
                 </li>
                 <li>
                   <a>Logout</a>
