@@ -10,7 +10,7 @@ const AdminPanel = () => {
 
       {/* Main Content */}
       <main className="flex-1 bg-gray-50 p-6 overflow-y-auto min-h-screen">
-        <h2 className="text-2xl font-semibold text-emerald-700 mb-4">
+        <h2 className="text-2xl font-medium text-[#080A16] mb-4">
           Welcome, Admin
         </h2>
 

@@ -39,7 +39,9 @@ const AddCourseForm = () => {
       <h1 className="text-2xl font-bold mb-4">Add New Course</h1>
 
       {error && <p className="text-red-500 mb-2">{error}</p>}
-      {successMessage && <p className="text-green-600 mb-2">{successMessage}</p>}
+      {successMessage && (
+        <p className="text-green-600 mb-2">{successMessage}</p>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Title */}
@@ -106,7 +108,7 @@ const AddCourseForm = () => {
 
         <button
           type="submit"
-          className="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
+          className="text-sm px-4 py-2 hover:bg-[#0c1756] text-white rounded-md bg-[#080A16]"
         >
           Submit
         </button>

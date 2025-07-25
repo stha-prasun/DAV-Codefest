@@ -28,7 +28,7 @@ const QuestionCard = ({ Question }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="text-sm w-fit h-10 py-2 px-4 bg-black text-white rounded-md hover:bg-gray-800"
+        className="text-sm w-fit h-10 py-2 px-4 bg-[#080A16] text-white rounded-md hover:bg-[#0c1756]"
       >
         View Details
       </button>

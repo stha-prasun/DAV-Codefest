@@ -47,13 +47,15 @@ const MessageCard = ({ message }) => {
           Sent on: {new Date(message.createdAt).toLocaleString()}
         </div>
       )}
-
-      <button
-              type="submit"
-              className="text-sm w-20 h-10 py-2 px-4 bg-black text-white rounded-md hover:bg-gray-800"
-            >
-              Submit
-            </button>
+      {/* Submit Button */}
+      <div className="flex mt-4">
+        <button
+          type="submit"
+          className="text-sm px-4 py-2 hover:bg-[#0c1756] text-white rounded-md bg-[#080A16]"
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

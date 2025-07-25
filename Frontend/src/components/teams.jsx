@@ -3,35 +3,36 @@ import React from "react";
 const teamMembers = [
   {
     name: "Prasun Shrestha",
-    role: "Lead Developer",
-    desc: "Prasun is a skilled developer with 5 years of experience in full-stack development.",
+    role: "Backend",
+    desc: "Prasun builds scalable backend systems and ensures smooth data flow between services and databases.",
     image: "src/assets/Prasun_Team.JPG",
   },
   {
     name: "Niraj Kushwaha",
-    role: "Backend Engineer",
-    desc: "Niraj specializes in building robust backend systems and APIs.",
+    role: "Backend",
+    desc: "Niraj focuses on server-side architecture and writes clean, efficient, and maintainable backend code.",
     image: "src/assets/Niraj_Team.JPG",
   },
   {
     name: "Prishma Dahal",
-    role: "UI/UX Designer",
-    desc: "Prishma is passionate about creating user-friendly interfaces.",
+    role: "Frontend",
+    desc: "Prishma designs and develops intuitive interfaces that provide users with seamless digital experiences.",
     image: "src/assets/Prishma_Team.JPG",
   },
   {
     name: "Rohan Shrestha",
-    role: "Full Stack Dev",
-    desc: "Rohan has a diverse skill set, working on both frontend and backend technologies.",
+    role: "UI/UX Designer",
+    desc: "Rohan creates thoughtful and engaging UI/UX designs that prioritize user needs and visual clarity.",
     image: "src/assets/Rohan_Team.JPG",
   },
   {
     name: "Aarav Bhattarai",
-    role: "Data Scientist",
-    desc: "Aarav uses data-driven insights to solve complex problems.",
+    role: "Frontend",
+    desc: "Aarav implements responsive frontends using modern tools, ensuring performance and accessibility.",
     image: "src/assets/Aarav_Team.JPG",
   },
 ];
+
 
 const Teams = () => {
   const firstRow = teamMembers.slice(0, 3);

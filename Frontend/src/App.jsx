@@ -34,7 +34,7 @@ const App = () => {
       element: <Membership />,
     },
     {
-      path: "/profile/:id",
+      path: "/profile ",
       element: <Profile />,
     },
     {
