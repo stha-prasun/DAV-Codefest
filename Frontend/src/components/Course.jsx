@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Course = () => {
+  const course = useSelector((store)=>store.Course.Course);
+
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
@@ -15,10 +18,10 @@ const Course = () => {
         >
           <div className="absolute bg-black/30 inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
             <h1 className="text-3xl md:text-5xl font-bold mb-4">
-              Test
+              {course?.title}
             </h1>
             <p className="text-lg md:text-2xl mb-2">
-              Test
+              {course?.subtitle}
             </p>
           </div>
         </div>
@@ -46,17 +49,17 @@ const Course = () => {
           {/* Main Tab Content */}
           <div className="flex-1">
             {activeTab === "overview" && (
-              "Test"
+              `${course?.overview}`
             )}
             {activeTab === "faq" && (
-              "Test"
+              `${course?.faq}`
             )}
           </div>
 
           {/* Sidebar Course Details */}
           <div className="lg:w-[350px] w-full bg-gray-100 shadow-lg rounded-xl p-6 space-y-4">
             <h2 className="text-2xl font-bold text-gray-800">Course Details</h2>
-            Test
+            `${course?.details}`
           </div>
         </div>
       </div>
