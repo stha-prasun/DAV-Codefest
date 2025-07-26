@@ -1,15 +1,18 @@
-import React from "react";
-import { FaUser } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaUser, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      {/* <nav
+      <nav
         className="bg-cover bg-center text-white"
         aria-label="Main Navigation"
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px] px-4">
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
               <img
@@ -23,57 +26,15 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <ul className="hidden md:flex gap-6 list-none m-0 p-0">
-            <li>
-              <Link
-                to="/"
-                className="hover:text-gray-300 transition-colors font-normal"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="#product"
-                className="hover:text-gray-300 transition-colors font-normal"
-              >
-                Product
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className="hover:text-gray-300 transition-colors font-normal"
-              >
-                About
-              </Link>
-            </li>
-          </ul>
-          <div>
-            <Link to="/login">
-              <button className="bg-white hover:text-white hover:bg-[#080A16] text-blue-950 font-medium py-[4px] px-[24px] rounded-3xl transition-colors flex justify-center items-center text-center w-fit group">
-                <span className="w-full text-center text-[16px] font-medium transition-transform duration-300 group-hover:-translate-y-0.5">
-                  Get Started
-                </span>
-              </button>
-            </Link>
-          </div>
-        </div>
-      </nav> */}
+          {/* Hamburger Icon (Mobile) */}
+          <button
+            className="text-white md:hidden text-2xl"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
 
-      <nav
-        className="bg-cover bg-center text-white"
-        aria-label="Main Navigation"
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px] px-1">
-          <div className="flex items-center gap-2">
-            <Link to="/" className="flex items-center gap-2">
-              <img src={Logo} alt="Company Logo" className="h-10 w-auto" />
-              <span className="text-2xl font-medium cursor-pointer">
-                DsaBuddy
-              </span>
-            </Link>
-          </div>
+          {/* Desktop Links */}
           <ul className="hidden md:flex gap-6 list-none m-0 p-0">
             <li>
               <Link
@@ -101,43 +62,65 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <div className="flex items-center gap-4">
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar relative group"
-              >
-                <div className="absolute inset-0 w-14 h-14 -top-2 -left-2 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 scale-125 group-hover:scale-150 transition-all duration-500 blur-md z-0"></div>
+          {/* Mobile Dropdown Menu */}
+          {isOpen && (
+            <ul className="absolute top-[60px] left-0 w-full bg-[#080A16] flex flex-col items-center gap-4 py-4 md:hidden z-50">
+              <li>
+                <Link
+                  to="/"
+                  className="hover:text-gray-300 transition-colors font-normal"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/demo"
+                  className="hover:text-gray-300 transition-colors font-normal"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Demo
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-gray-300 transition-colors font-normal"
+                  onClick={() => setIsOpen(false)}
+                >
+                  About
+                </Link>
+              </li>
+            </ul>
+          )}
 
-                <div className="w-10 rounded-full relative z-10 overflow-hidden ring-2 ring-transparent transform transition-transform duration-300 group-hover:scale-110">
-                  <img
-                    alt="User Avatar"
-                    src={`https://avatar.iran.liara.run/username?username=Scott+Wilson`}
-
-                  />
-                </div>
-              </div>
-
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-4 z-[100] w-52 p-3 rounded-xl shadow-lg backdrop-blur-md bg-white/10 border border-white/20 text-white transition-all duration-300"
-              >
-                <li className="hover:bg-white/20 rounded-md transition-colors">
-                  <Link to="/profile/:id" className="justify-between">
-                    Profile
-                  </Link>
-                </li>
-                <li className="hover:bg-white/20 rounded-md transition-colors">
-                  <Link to="/membership/buy">Upgrade Plan</Link>
-                </li>
-                <li className="hover:bg-white/20 rounded-md transition-colors">
-                  <Link to="/logout">Logout</Link>
-                </li>
-              </ul>
-            </div>
+          <div className="hidden md:block">
+            <Link to="/login">
+              <button className="bg-white hover:text-white hover:bg-[#080A16] text-blue-950 font-medium py-[4px] px-[24px] rounded-3xl transition-colors flex justify-center items-center text-center w-fit group">
+                <span className="w-full text-center text-[16px] font-medium transition-transform duration-300 group-hover:-translate-y-0.5">
+                  Get Started
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
+
+        {/* Mobile Button Placement */}
+        {isOpen && (
+          <div className="md:hidden px-4 pb-4">
+            <Link to="/login">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="bg-white w-full hover:text-white hover:bg-[#080A16] text-blue-950 font-medium py-2 px-6 rounded-3xl transition-colors text-center group"
+              >
+                <span className="text-[16px] font-medium transition-transform duration-300 group-hover:-translate-y-0.5">
+                  Get Started
+                </span>
+              </button>
+            </Link>
+          </div>
+        )}
       </nav>
     </>
   );
