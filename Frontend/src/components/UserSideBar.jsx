@@ -36,7 +36,7 @@ const UserSidebar = () => {
           </Link>
 
           <Link
-            to={`/profile/${loggedInUser._id}`}
+            to={`/profile/${loggedInUser?._id}`}
             className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
           >
             <User className="w-5 h-5" />

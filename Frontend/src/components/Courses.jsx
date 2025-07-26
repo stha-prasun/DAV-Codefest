@@ -1,8 +1,19 @@
 import React from "react";
 import UserSidebar from "./UserSideBar";
 import UserCourseCard from "./UserCourseCard";
+import { useEffect } from "react";
+import useGetAllCourses from "../hooks/useGetAllCourses";
+import { useSelector } from "react-redux";
 
 const Courses = () => {
+  const fetchCourses = useGetAllCourses();
+
+  useEffect(() => {
+    fetchCourses();
+  }, [])
+  
+  const courses = useSelector((store) => store?.Courses.courses);
+
   return (
     <div className="min-h-screen flex">
       <UserSidebar />
@@ -19,7 +30,7 @@ const Courses = () => {
               Courses
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <UserCourseCard title="test" description="test" id={1} />
+              <UserCourseCard title={`${courses?.title}`} description="By DSA Buddy" id={`${courses?._id}`} />
             </div>
           </div>
         </section>
