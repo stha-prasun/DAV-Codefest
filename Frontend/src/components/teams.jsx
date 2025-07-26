@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const teamMembers = [
   {
@@ -33,7 +34,6 @@ const teamMembers = [
   },
 ];
 
-
 const Teams = () => {
   const firstRow = teamMembers.slice(0, 3);
   const secondRow = teamMembers.slice(3);
@@ -44,39 +44,44 @@ const Teams = () => {
         <h1 className="text-5xl font-medium font-serif text-[#080A16] mb-6">
           Our Teams
         </h1>
-        <p className="text-lg text-gray-700 mb-15 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-700 mb-16 max-w-2xl mx-auto">
           Meet the talented individuals behind{" "}
           <span className="font-medium">DsaBuddy</span>, dedicated to helping
           you master Data Structures and Algorithms.
         </p>
 
         {/* First Row: 3 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-15">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-14">
           {firstRow.map((member, index) => (
-            <TeamCard key={index} member={member} />
+            <TeamCard key={index} member={member} index={index} />
           ))}
         </div>
 
-        {/* Second Row: 2 cards centered in 3-column grid */}
-        <div className="grid grid-cols-3 gap-8 justify-center">
-          <div className="col-start-1 col-span-3 flex gap-8 justify-center">
-            {secondRow.map((member, index) => (
-              <TeamCard key={index} member={member} />
-            ))}
-          </div>
+        {/* Second Row: 2 cards centered */}
+        <div className="flex justify-center gap-10 flex-wrap">
+          {secondRow.map((member, index) => (
+            <TeamCard key={index + 3} member={member} index={index + 3} />
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-const TeamCard = ({ member }) => (
-  <div className="w-full max-w-sm bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 flex flex-col items-center">
+const TeamCard = ({ member, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+    className="w-full max-w-sm bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center"
+  >
     {member.image ? (
       <img
         src={member.image}
         alt={member.name}
         className="w-24 h-24 rounded-full object-cover border-4 border-gray-200 mb-4"
+        loading="lazy"
       />
     ) : (
       <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-4xl mb-4">
@@ -84,11 +89,11 @@ const TeamCard = ({ member }) => (
       </div>
     )}
     <h2 className="text-xl font-bold text-gray-800">{member.name}</h2>
-    <p className="text-gray-600 text-center mb-2">{member.desc}</p>
-    <span className="mt-2 text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+    <p className="text-gray-600 text-center text-sm mb-2">{member.desc}</p>
+    <span className="mt-2 text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
       {member.role}
     </span>
-  </div>
+  </motion.div>
 );
 
 export default Teams;
