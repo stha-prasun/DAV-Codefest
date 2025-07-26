@@ -34,21 +34,37 @@ const Demo = () => {
               <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                 Problem Statement
               </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Given a string containing just the characters <code>'('</code>{" "}
-                and <code>')'</code>, determine if the input string is valid.
+              <p className="text-gray-700 leading-relaxed space-y-2">
+                Given an array of integers <code>nums</code> which is sorted in
+                ascending order, and an integer <code>target</code>, write a
+                function to search for <code>target</code> in <code>nums</code>.
+                <br />
+                If <code>target</code> exists, return its index. Otherwise,
+                return <code>-1</code>.
                 <br />
                 <br />
-                An input string is valid if:
-                <ul className="list-disc list-inside ml-4 mt-2">
-                  <li>
-                    Open brackets must be closed by the same type of brackets.
-                  </li>
-                  <li>Open brackets must be closed in the correct order.</li>
-                </ul>
+                <strong>
+                  You must write an algorithm with <code>O(log n)</code> runtime
+                  complexity.
+                </strong>
                 <br />
-                <strong>Example:</strong> <code>s = "()[]{}"</code> →{" "}
-                <code>true</code>
+                <br />
+                <span className="block font-semibold">Example 1:</span>
+                <code>Input: nums = [-1, 0, 3, 5, 9, 12], target = 9</code>
+                <br />
+                <code>Output: 4</code>
+                <br />
+                Explanation: 9 exists in <code>nums</code> and its index is{" "}
+                <code>4</code>.
+                <br />
+                <br />
+                <span className="block font-semibold">Example 2:</span>
+                <code>Input: nums = [-1, 0, 3, 5, 9, 12], target = 2</code>
+                <br />
+                <code>Output: -1</code>
+                <br />
+                Explanation: 2 does not exist in <code>nums</code>, so return{" "}
+                <code>-1</code>.
               </p>
             </div>
 

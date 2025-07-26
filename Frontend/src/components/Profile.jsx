@@ -42,7 +42,7 @@ const Profile = () => {
               className="w-26 h-26 rounded-full bg-cover bg-center mt-2"
               style={{
                 backgroundImage:
-                  "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCf5S2DVcn0QDy68aUiGHaP8o71P6GgMWtPqbbxOY_J1Nky1gGkUL4rrnQagwYi_PUglWG77bpnqbhYYr2W1cqRGDcaslBukp-YttdCLYqy6MSBR8SFit7xLNj0QBwBB7WUVVWRBx9S6Tp-7ruFsiO6u-vsrsZYHBMcmGoNeU_A5s2WjoDNIozI7HaVtnNVsz66KhdE8b7deGxKrQo7FRr6tUU2oJVsN79wlUtffEIVouLTmfhNg93O9FRn56sVIKjRq6wanPcdyZC4')",
+                  `url(https://avatar.iran.liara.run/username?username=Scott+Wilson)`,
               }}
             ></div>
           </div>
