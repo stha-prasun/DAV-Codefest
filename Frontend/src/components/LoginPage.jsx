@@ -54,7 +54,7 @@ export default function LoginPage() {
     const password = form.elements[1].value;
 
     try {
-      const res = await axios.post(`${USER_API_ENDPOINT}/login`, { email, password });
+      const res = await axios.post(`${USER_API_ENDPOINT}/login`, { email, password }, {withCredentials: true});
       console.log("Login success:", res.data);
       if(res?.data?.success){
         dispatch(setLoggedInUser(res?.data?.loggedInUser));
