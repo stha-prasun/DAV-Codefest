@@ -1,36 +1,31 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./shared/Navbar";
 import { motion } from "framer-motion";
 import Demo from "./Demo";
 import Footer from "./shared/Footer";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const DemoHeroPage = () => {
-  const videoRef = useRef(null);
   const demoRef = useRef(null);
-  const [showPopup, setShowPopup] = useState(true);
 
+  // Scroll to the video section by id
   const scrollToVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.scrollIntoView({ behavior: "smooth" });
+    const videoSection = document.getElementById("video-section");
+    if (videoSection) {
+      videoSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  // Scroll to demo section using ref
   const scrollToDemo = () => {
     if (demoRef.current) {
-      demoRef.current.scrollIntoView({ behavior: "smooth" });
+      demoRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
-  useEffect(() => {
-    // Optionally you can auto-hide popup after a few seconds
-    // const timer = setTimeout(() => setShowPopup(false), 8000);
-    // return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div>
+    <div className="bg-[#080A16] min-h-screen text-white">
       {/* Hero Section */}
       <div
         style={{
@@ -43,7 +38,7 @@ const DemoHeroPage = () => {
         className="relative"
       >
         <Navbar />
-        <section className="min-h-[80vh] flex items-center px-4 md:px-20 text-white">
+        <section className="min-h-[80vh] flex items-center px-50">
           <motion.div
             className="max-w-3xl space-y-6"
             initial={{ opacity: 0, y: 40 }}
@@ -52,12 +47,12 @@ const DemoHeroPage = () => {
           >
             <h1 className="text-[40px] md:text-[50px] font-bold leading-tight">
               Experience DsaBuddy in Action
-              <br className="block" />
+              <br />
               See How It Helps You
-              <br className="block" />
+              <br />
               Master DSA Faster
             </h1>
-            <p className="text-base md:text-lg text-gray-200">
+            <p className="text-base md:text-lg text-gray-300">
               Explore our interactive platform that simplifies Data Structures &
               Algorithms in Java. Get hands-on with the tools and features that
               make DsaBuddy your perfect coding companion.
@@ -77,6 +72,7 @@ const DemoHeroPage = () => {
           <button
             onClick={scrollToVideo}
             className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-black p-3 rounded-full backdrop-blur shadow-lg transition-all duration-300 hover:scale-105"
+            aria-label="Scroll down to video section"
           >
             <ChevronDown className="w-6 h-6" strokeWidth={2} />
           </button>
@@ -84,8 +80,11 @@ const DemoHeroPage = () => {
       </div>
 
       {/* Video Section */}
-      <div ref={videoRef} className="relative">
-        <div className="w-full aspect-video bg-black relative">
+      <div
+        id="video-section"
+        className="relative bg-black py-10"
+      >
+        <div className="relative w-full aspect-[16/9] max-w-5xl mx-auto rounded-lg overflow-hidden shadow-lg">
           <iframe
             className="w-full h-full"
             src="https://www.youtube.com/embed/2Vv-BfVoq4g"
@@ -94,38 +93,25 @@ const DemoHeroPage = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+        </div>
 
-          {/* Video Popup Overlay */}
-          {showPopup && (
-            <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-white p-6 z-20">
-              <div className="text-center max-w-md">
-                <h3 className="text-xl font-semibold mb-2">
-                  Welcome to the Demo!
-                </h3>
-                <p className="text-sm text-gray-300">
-                  Watch how DsaBuddy helps learners become confident in solving
-                  DSA problems using Java.
-                </p>
-              </div>
-              <button
-                onClick={() => setShowPopup(false)}
-                className="mt-6 px-4 py-2 bg-white text-black rounded-full hover:bg-gray-200 transition"
-              >
-                Close & Watch Video
-              </button>
-              <button
-                onClick={scrollToDemo}
-                className="mt-4 inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <ChevronDown className="w-6 h-6" strokeWidth={2} />
-              </button>
-            </div>
-          )}
+        {/* Scroll Button to Demo Section */}
+        <div className="flex justify-center py-8">
+          <button
+            onClick={scrollToDemo}
+            className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur shadow-lg transition-all duration-300 hover:scale-105 animate-bounce"
+            aria-label="Scroll down to demo editor"
+          >
+            <ChevronDown className="w-6 h-6" strokeWidth={2} />
+          </button>
         </div>
       </div>
 
       {/* Demo Editor Section */}
-      <div ref={demoRef} className="demo-part">
+      <div
+        ref={demoRef}
+        className="demo-part bg-[#f8f9fa]"
+      >
         <Demo />
       </div>
 

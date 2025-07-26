@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src="././src/assets/logo.png"
+                src="/logo.png"
                 alt="Company Logo"
                 className="h-10 w-auto"
               />
