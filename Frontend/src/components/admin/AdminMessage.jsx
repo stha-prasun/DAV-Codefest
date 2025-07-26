@@ -3,9 +3,19 @@ import AdminSidebar from "./AdminSidebar";
 import MessageCard from "./MessageCard";
 import useGetAllMessage from "../../hooks/useGetAllMessage";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AdminMessage = () => {
   const fetchMessage = useGetAllMessage();
+  const navigate = useNavigate();
+
+  const admin = useSelector((store) => store.Admin.Admin);
+
+  useEffect(() => {
+    if (!admin) {
+      navigate("/");
+    }
+  }, []);
 
   useEffect(() => {
     fetchMessage();
@@ -33,9 +43,7 @@ const AdminMessage = () => {
             {messages.length === 0 ? (
               <p className="text-gray-500">No messages available.</p>
             ) : (
-              messages.map((msg) => (
-                <MessageCard key={msg._id} message={msg} />
-              ))
+              messages.map((msg) => <MessageCard key={msg._id} message={msg} />)
             )}
           </div>
         </section>

@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import { QUESTIONS_API_ENDPOINT } from "../../utils/constants";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const AddQuestionForm = () => {
   const navigate = useNavigate();
+  const admin = useSelector((store) => store.Admin.Admin);
+
+  useEffect(() => {
+    if (!admin) {
+      navigate("/");
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     question: "",

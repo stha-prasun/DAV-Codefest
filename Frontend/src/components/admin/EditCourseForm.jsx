@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import axios from "axios";
@@ -8,6 +8,15 @@ import { useSelector } from "react-redux";
 
 const EditCourseForm = () => {
   const navigate = useNavigate();
+
+  const admin = useSelector((store) => store.Admin.Admin);
+
+  useEffect(() => {
+    if (!admin) {
+      navigate("/");
+    }
+  }, []);
+
   const course = useSelector((store) => store.Course.Course);
 
   const [formData, setFormData] = useState({

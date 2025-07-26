@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import axios from "axios";
 import { COURSE_API_ENDPOINT } from "../../utils/constants";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const AddCourseForm = () => {
   const navigate = useNavigate();
+  const admin = useSelector((store) => store.Admin.Admin);
+
+  useEffect(() => {
+    if (!admin) {
+      navigate("/");
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -47,10 +55,12 @@ const AddCourseForm = () => {
       {/* Background */}
       <div
         className="absolute inset-0 z-0"
-        style={{ backgroundImage: "url('/background-dsa.png')",
+        style={{
+          backgroundImage: "url('/background-dsa.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat" }}
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div className="w-full h-full bg-black/30 backdrop-blur-sm"></div>
       </div>

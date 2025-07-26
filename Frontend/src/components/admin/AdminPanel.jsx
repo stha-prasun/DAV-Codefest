@@ -3,8 +3,19 @@ import AdminCourseCard from "./AdminCourseCard";
 import AdminSidebar from "./AdminSidebar";
 import useGetAllCourses from "../../hooks/useGetAllCourses";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
+  const navigate = useNavigate();
+
+  const admin = useSelector((store) => store.Admin.Admin);
+
+  useEffect(() => {
+    if (!admin) {
+      navigate("/");
+    }
+  }, []);
+
   const fetchCourses = useGetAllCourses();
 
   useEffect(() => {
@@ -26,7 +37,9 @@ const AdminPanel = () => {
 
         <section id="courses" className="mt-8">
           <div className="border border-gray-300 rounded-lg bg-white p-6">
-            <div className="text-xl font-medium text-gray-700 mb-4">Courses</div>
+            <div className="text-xl font-medium text-gray-700 mb-4">
+              Courses
+            </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {courses.map((course) => (
                 <AdminCourseCard
