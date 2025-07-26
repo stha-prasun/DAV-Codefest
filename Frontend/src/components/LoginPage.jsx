@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";  // <-- Add this line
 import { GoPerson } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
+import { USER_API_ENDPOINT } from "../utils/constants";
+import { setLoggedInUser } from "../redux/userSlice";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 const testimonials = [
   {
@@ -9,25 +14,28 @@ const testimonials = [
     position: "Software Engineer / TechNova",
     photo: "https://randomuser.me/api/portraits/men/32.jpg",
     feedback:
-      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended!",
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp.",
   },
   {
     name: "Sarah Kim",
     position: "Frontend Developer / CodeCraft",
     photo: "https://randomuser.me/api/portraits/women/44.jpg",
     feedback:
-      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended",
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp.",
   },
   {
     name: "Rajesh Mehta",
     position: "Backend Developer / DevSphere",
     photo: "https://randomuser.me/api/portraits/men/76.jpg",
     feedback:
-      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended",
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp.",
   },
 ];
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -37,6 +45,27 @@ export default function LoginPage() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.elements[0].value;
+    const password = form.elements[1].value;
+
+    try {
+      const res = await axios.post(`${USER_API_ENDPOINT}/login`, { email, password });
+      console.log("Login success:", res.data);
+      if(res?.data?.success){
+        dispatch(setLoggedInUser(res?.data?.loggedInUser));
+        toast.success(res?.data?.message);
+        navigate("/user/home");
+      }
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <div className="flex min-h-screen">
@@ -91,7 +120,8 @@ export default function LoginPage() {
           </div>
           <p className="text-[#656565] mb-10">Enter your login details.</p>
 
-          <form className="w-full max-w-sm">
+          {/* Attach handleSubmit here */}
+          <form className="w-full max-w-sm" onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Email Address*
