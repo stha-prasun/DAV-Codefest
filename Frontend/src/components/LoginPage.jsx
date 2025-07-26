@@ -35,6 +35,7 @@ const testimonials = [
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -57,20 +58,22 @@ export default function LoginPage() {
         { email, password },
         { withCredentials: true }
       );
+      console.log("Login success:", res.data);
       if (res?.data?.success) {
         dispatch(setLoggedInUser(res?.data?.loggedInUser));
         toast.success(res?.data?.message);
         navigate("/user/home");
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed");
+      console.error("Login failed:", error.response?.data || error.message);
+      toast.error(error.response.data.message);
     }
   };
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       {/* Right side: login */}
-      <div className="w-full md:w-[40%] px-6 sm:px-8 py-8 bg-white flex flex-col">
+      <div className="w-full md:w-[40%] px-6 md:px-12 py-8 bg-white">
         {/* Top Register link */}
         <div className="flex justify-between items-center mb-6">
           <img
@@ -125,7 +128,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="example15@gmail.com"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
+                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
                 required
               />
             </div>
@@ -157,7 +160,7 @@ export default function LoginPage() {
           </form>
         </div>
 
-        {/* Back Button */}
+        {/* Back Button aligned with logo */}
         <div className="mt-9">
           <Link to="/">
             <button
@@ -173,8 +176,8 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Left side: Testimonials slider (hidden on mobile) */}
-      <div className="hidden md:block w-full md:w-[60%] py-2 pl-2 bg-white">
+      {/* Left side: Testimonials slider */}
+      <div className="w-full md:w-[60%] py-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
           style={{
