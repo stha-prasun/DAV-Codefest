@@ -56,15 +56,14 @@ const AddQuestionForm = () => {
           <h2 className="text-3xl font-bold text-white mb-4">
             Add New Question
           </h2>
-          <Link to="/admin/home">
-            <button
-              type="button"
-              className="flex items-center gap-1 text-gray-400 hover:text-gray-500 text-sm px-3 py-1"
-            >
-              <TbArrowBackUp className="text-lg" />
-              Back
-            </button>
-          </Link>
+          <div className="flex justify-between items-center mb-8">
+                    <Link to="/admin/questions">
+                      <button className="flex items-center gap-1 text-white hover:text-gray-300 text-sm">
+                        <TbArrowBackUp className="text-lg" />
+                        Back
+                      </button>
+                    </Link>
+                  </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-white">

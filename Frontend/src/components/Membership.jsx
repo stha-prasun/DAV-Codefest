@@ -5,14 +5,16 @@ import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { USER_API_ENDPOINT } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Membership = () => {
-  const loggedInUser = useSelector((store)=>store?.User.loggedInUser);
+  const navigate = useNavigate();
+  const loggedInUser = useSelector((store) => store?.User.loggedInUser);
 
-  const handleClick = async ()=>{
+  const handleClick = async () => {
     try {
       const res = await axios.post(`${USER_API_ENDPOINT}/membership/buy`, {
-        id: loggedInUser?._id
+        id: loggedInUser?._id,
       });
 
       console.log(res);
@@ -23,25 +25,35 @@ const Membership = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
-  }
+  };
+
   return (
-    <>
-    <Navbar/>
-      <div className="min-h-screen bg-white text-black flex items-center justify-center py-10 px-4">
+    <div style={{
+          backgroundImage: "url('/background-membership.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          backgroundRepeat: "no-repeat",
+        }}>
+      {/* Navbar with background image only */}
+      <Navbar />
+
+      {/* Membership Content */}
+      <div className="min-h-screen text-black flex items-center justify-center py-10 px-4"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
           {/* Free Membership Card */}
-          <div className="border border-gray-300 rounded-lg p-6 shadow-md flex flex-col">
-            <h2 className="text-2xl font-semibold mb-4 text-center opacity-40">
+          <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-md flex flex-col">
+            <h2 className="text-2xl font-semibold mb-4 text-center">
               Free Plan
             </h2>
-            <ul className="space-y-2 flex-1 opacity-30">
+            <ul className="space-y-2 flex-1">
               <li>✔ Access to limited courses</li>
               <li>✔ Weekly newsletter</li>
               <li>✔ Community forum access</li>
             </ul>
-            <button className="mt-auto font-semibold py-2 px-4 rounded bg-gray-200 transition opacity-30">
+            <button className="mt-auto font-semibold py-2 px-4 rounded bg-gray-200 transition">
               Free Plan Activated
             </button>
           </div>
@@ -60,14 +72,18 @@ const Membership = () => {
                 <li>✔ Monthly Q&A sessions</li>
               </ul>
             </div>
-            <button onClick={handleClick} className="mt-auto bg-[#080A16] text-[#FFFFF8] font-semibold py-2 px-4 rounded border border-gray-200 transition hover:bg-gray-100 hover:text-black">
+            <button
+              onClick={handleClick}
+              className="mt-auto bg-[#080A16] text-[#FFFFF8] font-semibold py-2 px-4 rounded border border-gray-200 transition hover:bg-gray-100 hover:text-black"
+            >
               Buy Membership
             </button>
           </div>
         </div>
       </div>
-      <Footer/>
-    </>
+
+      <Footer />
+    </div>
   );
 };
 

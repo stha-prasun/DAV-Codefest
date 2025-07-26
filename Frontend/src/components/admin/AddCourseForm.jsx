@@ -104,7 +104,7 @@ const AddCourseForm = () => {
             type="submit"
             className="text-sm px-6 py-2 bg-[#080A16] hover:bg-[#0c1756] text-white rounded-md"
           >
-            Submit
+            Done
           </button>
         </form>
       </div>
