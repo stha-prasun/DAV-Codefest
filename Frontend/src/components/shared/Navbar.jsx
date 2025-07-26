@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const loggedInUser = useSelector((store) => store.User.loggedInUser);
+  const firstName = loggedInUser?.fullname?.trim().split(" ")[0] || "XYZ";
   const navigate = useNavigate();
 
   return (
@@ -108,7 +109,7 @@ const Navbar = () => {
               </Link>
             ) : (
               <img
-                src={`https://avatar.iran.liara.run/username?username=${loggedInUser?.fullname}`}
+                src={`https://avatar.iran.liara.run/username?username=${firstName}`}
                 onClick={() => navigate(`/profile/${loggedInUser._id}`)}
                 alt="User Avatar"
                 className="w-8 h-8 rounded-full"
