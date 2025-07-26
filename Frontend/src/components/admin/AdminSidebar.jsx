@@ -1,11 +1,37 @@
-import React from 'react'
-import { BookOpen, Home, LogOut, MessageCircle, MessageCircleQuestionMark } from "lucide-react";
+import React from "react";
+import {
+  BookOpen,
+  Home,
+  LogOut,
+  MessageCircle,
+  MessageCircleQuestionMark,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { ADMIN_API_ENDPOINT } from "../../utils/constants";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const AdminSidebar = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleLogout = () => {};
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(
+        `${ADMIN_API_ENDPOINT}/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res.data);
+      if (res.data.success) {
+        toast.success(res.data.message);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -69,6 +95,6 @@ const AdminSidebar = () => {
       </aside>
     </div>
   );
-}
+};
 
-export default AdminSidebar
+export default AdminSidebar;

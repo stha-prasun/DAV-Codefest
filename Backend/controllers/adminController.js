@@ -4,16 +4,16 @@ import jwt from "jsonwebtoken";
 
 export const admin_signup = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!username || !password) {
+    if (!email || !password) {
       return res.status(400).json({
         message: "All Fields Required",
         success: false,
       });
     }
 
-    const user = await Admin.find({ username });
+    const user = await Admin.find({ email });
 
     if (!user) {
       return res.status(400).json({
@@ -25,7 +25,7 @@ export const admin_signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await Admin.create({
-      username,
+      email,
       password: hashedPassword,
     });
 
@@ -49,7 +49,7 @@ export const admin_login = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ email });
+    const user = await Admin.findOne({ email });
 
     if (!user) {
       return res.status(400).json({
@@ -89,7 +89,7 @@ export const admin_login = async (req, res) => {
         sameSite: "strict",
       })
       .json({
-        message: `Welcome Back ${user.fullname}!!`,
+        message: `Welcome Back Admin!!`,
         success: true,
         loggedInUser,
       });

@@ -2,15 +2,32 @@ import React, { useState } from "react";
 import { BookOpen, Home, LogOut, User, Menu, Wrench } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { USER_API_ENDPOINT } from "../utils/constants";
+import toast from "react-hot-toast";
 
 const UserSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const loggedInUser = useSelector((store) => store.User.loggedInUser);
 
-  const handleLogout = () => {
-    // Your logout logic here
-    setIsOpen(false); // Optional: close sidebar after logout
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(
+        `${USER_API_ENDPOINT}/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res.data);
+      if (res.data.success) {
+        toast.success(res.data.message);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
