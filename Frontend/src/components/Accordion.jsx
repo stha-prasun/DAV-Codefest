@@ -29,8 +29,8 @@ const Accordion = () => {
           Can I track my progress on DsaBuddy?
         </div>
         <div className="collapse-content text-sm">
-          Yes! You get real-time analytics, progress charts, and personalized
-          learning paths based on your performance.
+          No! You cannot track your progress on DsaBuddy. We currently are
+          working on the next update to include this feature.
         </div>
       </div>
     </>

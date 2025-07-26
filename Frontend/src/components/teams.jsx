@@ -15,13 +15,13 @@ const teamMembers = [
   },
   {
     name: "Prishma Dahal",
-    role: "Frontend",
+    role: "UI/UX Designer",
     desc: "Prishma designs and develops intuitive interfaces that provide users with seamless digital experiences.",
     image: "src/assets/Prishma_Team.JPG",
   },
   {
     name: "Rohan Shrestha",
-    role: "UI/UX Designer",
+    role: "UI/UX Designer / Frontend",
     desc: "Rohan creates thoughtful and engaging UI/UX designs that prioritize user needs and visual clarity.",
     image: "src/assets/Rohan_Team.JPG",
   },
