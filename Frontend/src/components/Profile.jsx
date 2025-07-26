@@ -9,7 +9,11 @@ const Profile = () => {
   const firstName = loggedInUser?.fullname?.trim().split(" ")[0] || "XYZ";
 
   const fields = [
-    { label: "Profile Name", type: "text", value: loggedInUser?.fullname || "" },
+    {
+      label: "Profile Name",
+      type: "text",
+      value: loggedInUser?.fullname || "",
+    },
     { label: "Username", type: "text", value: loggedInUser?.fullname || "" },
     { label: "Email", type: "email", value: loggedInUser?.email || "" },
   ];
@@ -22,7 +26,7 @@ const Profile = () => {
       </div>
 
       <div
-        className="relative flex min-h-screen flex-col overflow-x-hidden items-center justify-center pt-20"
+        className="relative flex min-h-screen flex-col overflow-x-hidden items-center justify-center pt-24 px-4 sm:px-6"
         style={{
           backgroundImage: "url('/profile-background.png')",
           backgroundSize: "cover",
@@ -31,7 +35,7 @@ const Profile = () => {
           fontFamily: 'Inter, "Noto Sans", sans-serif',
         }}
       >
-        <div className="bg-white shadow-xl rounded-2xl w-[480px] p-8">
+        <div className="bg-white shadow-xl rounded-2xl w-full max-w-md sm:w-[480px] p-6 sm:p-8">
           <Link to="/">
             <button
               type="button"
@@ -49,7 +53,7 @@ const Profile = () => {
               Profile Picture
             </p>
             <div
-              className="w-26 h-26 rounded-full bg-cover bg-center mt-2"
+              className="w-24 h-24 sm:w-26 sm:h-26 rounded-full bg-cover bg-center mt-2"
               style={{
                 backgroundImage: `url(https://avatar.iran.liara.run/username?username=${firstName})`,
               }}
@@ -58,9 +62,11 @@ const Profile = () => {
 
           {/* Form */}
           {fields.map((field, idx) => (
-            <div key={idx} className="flex max-w-[480px] flex-wrap gap-4 py-3">
-              <label className="flex flex-col flex-1 min-w-40">
-                <p className="text-base font-medium text-[#121416] pb-2">{field.label}</p>
+            <div key={idx} className="flex flex-wrap gap-4 py-3">
+              <label className="flex flex-col flex-1 min-w-40 w-full">
+                <p className="text-base font-medium text-[#121416] pb-2">
+                  {field.label}
+                </p>
 
                 <input
                   type={field.type}
