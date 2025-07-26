@@ -13,7 +13,7 @@ const Course = () => {
         <div
           className="w-full h-[80vh] bg-center bg-cover relative flex items-center justify-center"
           style={{
-            backgroundImage: `url('/background.png')`,
+            backgroundImage: `url('/code.jpg')`,
           }}
         >
           <div className="absolute bg-black/30 inset-0 flex flex-col items-center justify-center px-4 text-center text-white">

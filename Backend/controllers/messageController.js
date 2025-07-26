@@ -3,7 +3,7 @@ import { User } from "../models/userSchema.js";
 
 export const getAllMessages = async (req, res) => {
   try {
-    const messages = await Message.find().populate("user", "username email");
+    const messages = await Message.find().populate("user", "fullname email");
 
     return res.status(200).json({
       messages,
@@ -59,22 +59,22 @@ export const MarkAsComplete = async (req, res)=>{
       })
     }
 
-    const message = await Message.findById(id);
+    const _message = await Message.findById(id);
 
-    if(!message){
+    if(!_message){
       return res.status(400).json({
         message: "No Message Found",
         success: false
       })
     }
 
-    message.isSolved = true;
-    await message.save();
+    _message.isSolved = true;
+    await _message.save();
 
     return res.status(200).json({
       message: "Marked As Completed",
       success: true,
-      message
+      _message
     })
   } catch (error) {
     console.log(error);

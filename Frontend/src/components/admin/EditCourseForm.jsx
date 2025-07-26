@@ -4,15 +4,18 @@ import { TbArrowBackUp } from "react-icons/tb";
 import axios from "axios";
 import { COURSE_API_ENDPOINT } from "../../utils/constants";
 import toast from "react-hot-toast";
-const AddCourseForm = () => {
+import { useSelector } from "react-redux";
+const EditCourseForm = () => {
   const navigate = useNavigate();
+  const course = useSelector((store)=>store.Course.Course);
 
   const [formData, setFormData] = useState({
-    title: "",
-    subtitle: "",
-    overview: "",
-    faq: "",
-    details: "",
+    id: course._id,
+    title: course.title,
+    subtitle: course.subtitle,
+    overview: course.overview,
+    faq: course.faq,
+    details: course.details,
   });
 
   const handleChange = (e) => {
@@ -26,8 +29,9 @@ const AddCourseForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${COURSE_API_ENDPOINT}/add`,
+        `${COURSE_API_ENDPOINT}/update`,
         {
+          id: formData.id,
           title: formData.title,
           subtitle: formData.subtitle,
           overview: formData.overview,
@@ -65,7 +69,7 @@ const AddCourseForm = () => {
         <div className="flex justify-between items-center mb-6 px-2 space-x-4">
           {/* Back Button */}
           {/* Title */}
-          <h2 className="text-3xl font-bold text-white mb-4">Add New Course</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Edit Course</h2>
           <Link to="/admin/home">
             <button
               type="button"
@@ -153,4 +157,4 @@ const AddCourseForm = () => {
   );
 };
 
-export default AddCourseForm;
+export default EditCourseForm;

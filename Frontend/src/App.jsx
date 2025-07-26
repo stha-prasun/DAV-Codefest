@@ -16,6 +16,7 @@ import About from "./components/About";
 import AddCourseForm from "./components/admin/AddCourseForm";
 import Courses from "./components/Courses";
 import AddQuestionForm from "./components/admin/AddQuestionForm";
+import EditCourseForm from "./components/admin/EditCourseForm";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -88,7 +89,10 @@ const App = () => {
       path: "/admin/question/add",
       element: <AddQuestionForm />,
     },
-
+    {
+      path: "/admin/course/edit/",
+      element: <EditCourseForm />,
+    },
   ]);
   return (
     <div>

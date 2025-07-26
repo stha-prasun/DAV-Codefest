@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookOpen, LogOut, MessageCircle } from "lucide-react";
+import { BookOpen, Home, LogOut, MessageCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
@@ -17,6 +17,13 @@ const AdminSidebar = () => {
 
         {/* Navigation */}
         <nav className="space-y-2 p-4">
+          <Link
+            to="/admin/home"
+            className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
+          >
+            <Home className="w-5 h-5" />
+            <span>Home</span>
+          </Link>
           <Link
             to="/admin/course/add"
             className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"

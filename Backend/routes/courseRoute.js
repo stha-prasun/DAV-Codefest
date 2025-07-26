@@ -9,6 +9,6 @@ router.route("/add").post(addCourse);
 
 router.route("/delete").delete(deleteCourse);
 
-router.route("/update").put(updateCourse);
+router.route("/update").post(updateCourse);
 
 export default router;
