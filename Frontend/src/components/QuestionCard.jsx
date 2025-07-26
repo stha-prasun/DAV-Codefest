@@ -1,6 +1,12 @@
 import React from "react";
+import { setQuestion } from "../redux/questionSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const QuestionCard = ({ Question }) => {
+  const dispatch = useDispatch(); 
+  const navigate = useNavigate();
+
   // Badge color based on difficulty
   const difficultyBadgeClass = {
     Easy: "bg-green-100 text-green-700 border border-green-300",
@@ -27,7 +33,10 @@ const QuestionCard = ({ Question }) => {
 
       {/* Submit Button */}
       <button
-        type="submit"
+        onClick={()=>{
+          dispatch(setQuestion(Question));
+          navigate(`/user/dsa`)
+        }}
         className="text-sm w-fit h-10 py-2 px-4 bg-[#080A16] text-white rounded-md hover:bg-[#0c1756]"
       >
         View Details
