@@ -11,7 +11,7 @@ import AdminPanel from "./components/admin/AdminPanel";
 import ContactMentor from "./components/ContactMentor";
 import UserPanel from "./components/UserPanel";
 import Dsa from "./components/DSA";
-import Demo from "./components/Demo";
+import Demo from "./components/DemoHeroPage";
 import About from "./components/About"; 
 import AddCourseForm from "./components/admin/AddCourseForm";
 import Courses from "./components/Courses";

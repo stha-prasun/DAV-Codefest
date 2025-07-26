@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
-import Navbar from "./shared/Navbar";
-import Footer from "./shared/Footer";
 import axios from "axios";
 import { AI_API_ENDPOINT } from "../utils/constants";
 
@@ -50,7 +48,6 @@ Use the binary search algorithm.`;
         backgroundRepeat: "no-repeat",
       }}
     >
-      <Navbar />
       <div
         className="p-4 sm:p-6 min-h-screen flex flex-col"
         style={{
@@ -123,7 +120,6 @@ Use the binary search algorithm.`;
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
