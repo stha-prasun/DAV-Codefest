@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookOpen, Home, LogOut, MessageCircle } from "lucide-react";
+import { BookOpen, Home, LogOut, MessageCircle, MessageCircleQuestionMark } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
@@ -46,6 +46,14 @@ const AdminSidebar = () => {
           >
             <MessageCircle className="w-5 h-5" />
             <span>Messages</span>
+          </Link>
+
+          <Link
+            to="/admin/questions"
+            className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
+          >
+            <MessageCircleQuestionMark className="w-5 h-5" />
+            <span>Questions</span>
           </Link>
 
           <div className="w-full mt-6 border-t border-white/30" />
