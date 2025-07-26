@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";  // <-- Add this line
+import axios from "axios";
 import { GoPerson } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
@@ -35,7 +35,6 @@ const testimonials = [
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [showPassword, setShowPassword] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -48,29 +47,30 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const form = e.target;
     const email = form.elements[0].value;
     const password = form.elements[1].value;
 
     try {
-      const res = await axios.post(`${USER_API_ENDPOINT}/login`, { email, password }, {withCredentials: true});
-      console.log("Login success:", res.data);
-      if(res?.data?.success){
+      const res = await axios.post(
+        `${USER_API_ENDPOINT}/login`,
+        { email, password },
+        { withCredentials: true }
+      );
+      if (res?.data?.success) {
         dispatch(setLoggedInUser(res?.data?.loggedInUser));
         toast.success(res?.data?.message);
         navigate("/user/home");
       }
     } catch (error) {
-      console.error("Login failed:", error.response?.data || error.message);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen">
       {/* Right side: login */}
-      <div className="flex flex-col w-[40%] px-12 py-8 bg-white">
+      <div className="w-full md:w-[40%] px-6 sm:px-8 py-8 bg-white flex flex-col">
         {/* Top Register link */}
         <div className="flex justify-between items-center mb-6">
           <img
@@ -87,9 +87,6 @@ export default function LoginPage() {
                 <button
                   type="button"
                   className="px-4 py-[4px] text-sm font-medium text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 transition"
-                  onClick={() => {
-                    console.log("Register button clicked");
-                  }}
                 >
                   Register
                 </button>
@@ -120,7 +117,6 @@ export default function LoginPage() {
           </div>
           <p className="text-[#656565] mb-10">Enter your login details.</p>
 
-          {/* Attach handleSubmit here */}
           <form className="w-full max-w-sm" onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -129,7 +125,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="example15@gmail.com"
-                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
                 required
               />
             </div>
@@ -161,15 +157,12 @@ export default function LoginPage() {
           </form>
         </div>
 
-        {/* Back Button aligned with logo */}
+        {/* Back Button */}
         <div className="mt-9">
           <Link to="/">
             <button
               type="button"
               className="flex items-center text-gray-500 hover:text-gray-700 text-base font-normal"
-              onClick={() => {
-                console.log("Back button clicked");
-              }}
             >
               <span className="mr-1 text-xl">
                 <TbArrowBackUp />
@@ -180,8 +173,8 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Left side: Testimonials slider */}
-      <div className="w-[60%] py-2 pl-2 bg-white">
+      {/* Left side: Testimonials slider (hidden on mobile) */}
+      <div className="hidden md:block w-full md:w-[60%] py-2 pl-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
           style={{
