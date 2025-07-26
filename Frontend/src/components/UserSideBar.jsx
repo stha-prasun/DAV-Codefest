@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BookOpen, Home, LogOut, User, Menu } from "lucide-react";
+import { BookOpen, Home, LogOut, User, Menu, Wrench } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -55,6 +55,15 @@ const UserSidebar = () => {
               <span>Courses</span>
             </Link>
           )}
+
+          <Link
+            to={"/membership/buy"}
+            className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
+            onClick={() => setIsOpen(false)}
+          >
+            <Wrench className="w-5 h-5" />
+            <span>Upgarde Plan</span>
+          </Link>
 
           <Link
             to={`/profile/${loggedInUser?._id}`}

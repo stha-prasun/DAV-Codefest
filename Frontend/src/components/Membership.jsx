@@ -1,8 +1,31 @@
 import React from "react";
 import Navbar from "./shared/Navbar";
 import Footer from "./shared/Footer";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { USER_API_ENDPOINT } from "../utils/constants";
 
 const Membership = () => {
+  const loggedInUser = useSelector((store)=>store?.User.loggedInUser);
+
+  const handleClick = async ()=>{
+    try {
+      const res = await axios.post(`${USER_API_ENDPOINT}/membership/buy`, {
+        id: loggedInUser?._id
+      });
+
+      console.log(res);
+
+      if (res?.data?.success) {
+        toast.success(res.data.message);
+        navigate("/user/home");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  }
   return (
     <>
     <Navbar/>
@@ -37,7 +60,7 @@ const Membership = () => {
                 <li>✔ Monthly Q&A sessions</li>
               </ul>
             </div>
-            <button className="mt-auto bg-[#080A16] text-[#FFFFF8] font-semibold py-2 px-4 rounded border border-gray-200 transition hover:bg-gray-100 hover:text-black">
+            <button onClick={handleClick} className="mt-auto bg-[#080A16] text-[#FFFFF8] font-semibold py-2 px-4 rounded border border-gray-200 transition hover:bg-gray-100 hover:text-black">
               Buy Membership
             </button>
           </div>
