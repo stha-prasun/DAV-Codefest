@@ -68,11 +68,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between py-[10px] px-1">
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
-              <img
-                src={Logo}
-                alt="Company Logo"
-                className="h-10 w-auto"
-              />
+              <img src={Logo} alt="Company Logo" className="h-10 w-auto" />
               <span className="text-2xl font-medium cursor-pointer">
                 DsaBuddy
               </span>
@@ -124,18 +120,18 @@ const Navbar = () => {
 
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content text-white bg-gray-800 rounded-box z-50 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content mt-4 z-[100] w-52 p-3 rounded-xl shadow-lg backdrop-blur-md bg-white/10 border border-white/20 text-white transition-all duration-300"
               >
-                <li>
-                  <Link to="/profile/:id" className="justify-between hover:bg-gray-500">
+                <li className="hover:bg-white/20 rounded-md transition-colors">
+                  <Link to="/profile/:id" className="justify-between">
                     Profile
                   </Link>
                 </li>
-                <li>
-                  <Link to="/membership/buy" className="hover:bg-gray-500">Upgrade plan</Link>
+                <li className="hover:bg-white/20 rounded-md transition-colors">
+                  <Link to="/membership/buy">Upgrade Plan</Link>
                 </li>
-                <li>
-                  <Link to="/logout" className="hover:bg-gray-500">Logout</Link>
+                <li className="hover:bg-white/20 rounded-md transition-colors">
+                  <Link to="/logout">Logout</Link>
                 </li>
               </ul>
             </div>
