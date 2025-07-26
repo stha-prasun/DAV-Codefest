@@ -5,9 +5,27 @@ import Footer from "./shared/Footer";
 
 const Dsa = () => {
   return (
-    <div className="bg-[#080A16]">
+    <div
+      className=""
+      style={{
+        minHeight: "100vh",
+        backgroundImage: "url('/background-dsa.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <Navbar />
-      <div className="p-6 min-h-screen bg-[#f8f8f8] flex flex-col">
+      <div
+        className="p-6 min-h-screen  flex flex-col"
+        style={{
+          minHeight: "100vh",
+          backgroundImage: "url('/background.png-dsa')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="flex gap-6 flex-grow h-full">
           {/* Left Panel */}
           <div className="left w-[60%] flex flex-col rounded-xl gap-6">
