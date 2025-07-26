@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { GoPerson } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import { FaUserPlus, FaEnvelope, FaLock } from "react-icons/fa";
+import axios from "axios";
+import { USER_API_ENDPOINT } from "../utils/constants";
+import toast from "react-hot-toast";
 
 const testimonials = [
   {
@@ -10,7 +13,7 @@ const testimonials = [
     position: "Software Engineer / TechNova",
     photo: "https://randomuser.me/api/portraits/men/32.jpg",
     feedback:
-      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp. Highly recommended!",
+      "DSA Buddy has been a game-changer for mastering Java algorithms. The platform is intuitive and makes complex concepts easy to grasp.",
   },
   {
     name: "Sarah Kim",
@@ -29,15 +32,43 @@ const testimonials = [
 ];
 
 export default function Signup() {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 3000); // ⏱️ Auto-swiper every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const fullname = `${firstName} ${lastName}`;
+
+    try {
+      const res = await axios.post(`${USER_API_ENDPOINT}/signup`, {
+        fullname,
+        email,
+        password,
+      });
+
+      if (res?.data?.success) {
+        toast.success(res.data.message);
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <div className="flex min-h-screen">
@@ -94,7 +125,6 @@ export default function Signup() {
 
       {/* Right side: signup form */}
       <div className="flex flex-col w-[40%] px-12 py-8 bg-white">
-        {/* Top Register link */}
         <div className="flex justify-between items-center mb-12">
           <img
             src="././src/assets/logo_black.png"
@@ -137,7 +167,10 @@ export default function Signup() {
           <div className="mb-2 text-4xl font-semibold text-center text-black">
             Create your account
           </div>
-          <form className="p-8 rounded-lg w-full max-w-md space-y-5">
+          <form
+            className="p-8 rounded-lg w-full max-w-md space-y-5"
+            onSubmit={handleSubmit}
+          >
             <div className="flex gap-4">
               <div className="w-1/2">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -149,11 +182,14 @@ export default function Signup() {
                     type="text"
                     placeholder="john"
                     className="outline-none w-full bg-transparent border-gray-300 text-black"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
                   />
                 </div>
               </div>
               <div className="w-1/2">
-                <label className="block text-sm font-medium text-gray-400 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Last name
                 </label>
                 <div className="flex items-center border border-gray-300 rounded-md shadow-sm text-black px-3 py-2 focus-within:border-black">
@@ -162,6 +198,9 @@ export default function Signup() {
                     type="text"
                     placeholder="doe"
                     className="outline-none w-full bg-transparent border-gray-300 text-black"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -175,8 +214,11 @@ export default function Signup() {
                 <FaEnvelope className="text-gray-400 mr-2" />
                 <input
                   type="email"
-                  placeholder="example415@gmail.com"
+                  placeholder="example@gmail.com"
                   className="outline-none w-full bg-transparent border-gray-300 text-black"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -185,23 +227,20 @@ export default function Signup() {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Password<span className="text-red-500">*</span>
               </label>
-              <div className="flex items-center border border-gray-300 rounded-md shadow-sm text-black px-3 py-2 focus-within:border-black">
+              <div className="flex items-center border border-gray-300 rounded-md shadow-sm text-black px-3 py-2 focus-within:border-black relative">
                 <FaLock className="text-gray-400 mr-2" />
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   className="outline-none w-full bg-transparent border-gray-300 text-black"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute right-3 top-9 text-sm text-gray-500 hover:text-gray-700"
-                  style={{
-                    position: "absolute",
-                    right: "1rem",
-                    top: "2.25rem",
-                  }}
+                  className="absolute right-3 text-sm text-gray-500 hover:text-gray-700"
                 >
                   {showPassword ? "Hide" : "Show"}
                 </button>
@@ -217,7 +256,6 @@ export default function Signup() {
           </form>
         </div>
 
-        {/* Back Button aligned with logo */}
         <div className="mt-9">
           <Link to="/">
             <button
