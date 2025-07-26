@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookOpen, LogOut, MessageCircle } from "lucide-react";
+import { BookOpen, Home, LogOut, MessageCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const UserSidebar = () => {
@@ -18,19 +18,19 @@ const UserSidebar = () => {
         {/* Navigation */}
         <nav className="space-y-2 p-4">
           <Link
-            to="/admin/add-course"
+            to="/user/home"
             className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
           >
-            <BookOpen className="w-5 h-5" />
-            <span>Add Questions</span>
+            <Home className="w-5 h-5" />
+            <span>Home</span>
           </Link>
 
           <Link
-            to="/admin/messages"
+            to="/user/courses"
             className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
           >
-            <MessageCircle className="w-5 h-5" />
-            <span>Messages</span>
+            <BookOpen className="w-5 h-5" />
+            <span>Courses</span>
           </Link>
 
           <div className="w-full mt-6 border-t border-white/30" />
