@@ -33,6 +33,14 @@ const AdminSidebar = () => {
           </Link>
 
           <Link
+            to="/admin/question/add"
+            className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
+          >
+            <BookOpen className="w-5 h-5" />
+            <span>Add Question</span>
+          </Link>
+
+          <Link
             to="/admin/messages"
             className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
           >

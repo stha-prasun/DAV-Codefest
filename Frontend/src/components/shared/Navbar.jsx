@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { FaUser, FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import Logo from "../../assets/logo.png";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const loggedInUser = useSelector((store) => store.User.loggedInUser);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -96,13 +98,22 @@ const Navbar = () => {
           )}
 
           <div className="hidden md:block">
-            <Link to="/login">
-              <button className="bg-white hover:text-white hover:bg-[#080A16] text-blue-950 font-medium py-[4px] px-[24px] rounded-3xl transition-colors flex justify-center items-center text-center w-fit group">
-                <span className="w-full text-center text-[16px] font-medium transition-transform duration-300 group-hover:-translate-y-0.5">
-                  Get Started
-                </span>
-              </button>
-            </Link>
+            {!loggedInUser ? (
+              <Link to="/login">
+                <button className="bg-white hover:text-white hover:bg-[#080A16] text-blue-950 font-medium py-[4px] px-[24px] rounded-3xl transition-colors flex justify-center items-center text-center w-fit group">
+                  <span className="w-full text-center text-[16px] font-medium transition-transform duration-300 group-hover:-translate-y-0.5">
+                    Get Started
+                  </span>
+                </button>
+              </Link>
+            ) : (
+              <img
+                src={`https://avatar.iran.liara.run/username?username=${loggedInUser?.fullname}`}
+                onClick={() => navigate(`/profile/${loggedInUser._id}`)}
+                alt="User Avatar"
+                className="w-8 h-8 rounded-full"
+              />
+            )}
           </div>
         </div>
 
