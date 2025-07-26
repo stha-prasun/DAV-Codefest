@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 import Navbar from "./shared/Navbar";
 import Footer from "./shared/Footer";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { AI_API_ENDPOINT } from "../utils/constants";
 
 const Dsa = () => {
+  const Question = useSelector((store) => store.Question.Question);
+  const [suggestion, setSuggestion] = useState(
+    "AI Suggestion Will Appear Here"
+  );
+  const [code, setCode] = useState("");
+
+  const handleSuggestionClick = async () => {
+    try {
+      const res = await axios.post(`${AI_API_ENDPOINT}/answer/check`, {
+        question: Question.question,
+        description: Question.description,
+        code: code,
+      });
+
+      if (res.data?.success) {
+        setSuggestion(res.data.suggestion);
+      }
+    } catch (err) {
+      console.error(err);
+      setSuggestion("Failed to fetch AI suggestions.");
+    }
+  };
+
   return (
     <div
       className=""
@@ -32,23 +58,10 @@ const Dsa = () => {
             {/* Top Left: Question Panel */}
             <div className="top-left flex-1 p-6 overflow-y-auto bg-white rounded-lg border border-gray-200 shadow-sm">
               <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-                Problem Statement
+                {Question.question}
               </h2>
               <p className="text-gray-700 leading-relaxed">
-                Given a string containing just the characters <code>'('</code>{" "}
-                and <code>')'</code>, determine if the input string is valid.
-                <br />
-                <br />
-                An input string is valid if:
-                <ul className="list-disc list-inside ml-4 mt-2">
-                  <li>
-                    Open brackets must be closed by the same type of brackets.
-                  </li>
-                  <li>Open brackets must be closed in the correct order.</li>
-                </ul>
-                <br />
-                <strong>Example:</strong> <code>s = "()[]{}"</code> →{" "}
-                <code>true</code>
+                {Question.description}
               </p>
             </div>
 
@@ -60,14 +73,14 @@ const Dsa = () => {
 
               {/* Suggestion Text */}
               <div className="bg-[#f9f9f9] p-3 rounded-md shadow-inner text-sm text-gray-700 overflow-y-auto flex-grow">
-                Try using a stack to match opening and closing brackets
-                efficiently.
+                {suggestion}
               </div>
 
               {/* Suggestion Button aligned to bottom right */}
               <div className="mt-3 flex justify-end shrink-0">
                 <button
                   type="button"
+                  onClick={handleSuggestionClick}
                   className="px-4 py-2 text-sm font-medium bg-black text-white rounded hover:bg-gray-800 transition"
                 >
                   Suggestions
@@ -89,6 +102,7 @@ const Dsa = () => {
                 defaultLanguage="java"
                 defaultValue={`// Enter your Java code here`}
                 theme="vs-dark"
+                onChange={(value) => setCode(value)}
                 options={{
                   minimap: { enabled: false },
                   padding: { top: 10, bottom: 10, left: 10, right: 10 },
@@ -99,7 +113,7 @@ const Dsa = () => {
             {/* Submit Button aligned right */}
             <div className="flex justify-end">
               <button
-                type="button"
+                onClick={handleSuggestionClick}
                 className="px-5 py-2 bg-black text-white rounded hover:bg-gray-800 transition text-sm font-medium"
               >
                 Submit
