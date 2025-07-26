@@ -58,24 +58,21 @@ export default function LoginPage() {
         { email, password },
         { withCredentials: true }
       );
-      console.log("Login success:", res.data);
       if (res?.data?.success) {
         dispatch(setLoggedInUser(res?.data?.loggedInUser));
         toast.success(res?.data?.message);
         navigate("/user/home");
       }
     } catch (error) {
-      console.error("Login failed:", error.response?.data || error.message);
       toast.error(error.response.data.message);
     }
   };
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
-      {/* Right side: login */}
-      <div className="w-full md:w-[40%] px-6 md:px-12 py-8 bg-white">
-        {/* Top Register link */}
-        <div className="flex justify-between items-center mb-6">
+      {/* Left side: Testimonials */}
+      <div className="flex flex-col w-full md:w-2/5 px-8 md:px-12 py-8 bg-white">
+        <div className="flex justify-between items-center mb-12">
           <img
             src="././src/assets/logo_black.png"
             alt="logo"
@@ -85,20 +82,17 @@ export default function LoginPage() {
             <span className="text-sm text-gray-600 mr-2">
               Don’t have an account?
             </span>
-            <div className="flex justify-center">
-              <Link to="/signup">
-                <button
-                  type="button"
-                  className="px-4 py-[4px] text-sm font-medium text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 transition"
-                >
-                  Register
-                </button>
-              </Link>
-            </div>
+            <Link to="/signup">
+              <button
+                type="button"
+                className="px-4 py-[4px] text-sm font-medium text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 transition"
+              >
+                Register
+              </button>
+            </Link>
           </div>
         </div>
 
-        {/* Centered login box */}
         <div className="flex flex-col justify-center items-center flex-grow">
           <div className="mb-6">
             <div
@@ -120,21 +114,21 @@ export default function LoginPage() {
           </div>
           <p className="text-[#656565] mb-10">Enter your login details.</p>
 
-          <form className="w-full max-w-sm" onSubmit={handleSubmit}>
-            <div className="mb-4">
+          <form className="w-full max-w-md space-y-5" onSubmit={handleSubmit}>
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email Address*
+                Email Address<span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
                 placeholder="example15@gmail.com"
-                className="w-full h-[80%] px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring text-black focus:border-black"
                 required
               />
             </div>
-            <div className="mb-6 relative">
+            <div className="relative">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Password*
+                Password<span className="text-red-500">*</span>
               </label>
               <input
                 type={showPassword ? "text" : "password"}
@@ -145,7 +139,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-3 top-9 text-sm text-gray-500 hover:text-gray-700 focus:outline-none"
+                className="absolute right-3 top-9 text-sm text-gray-500 hover:text-gray-700"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
@@ -153,14 +147,13 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-black text-white rounded-md hover:bg-gray-800"
+              className="w-full py-2 px-4 bg-black text-white rounded-md hover:bg-gray-800 transition"
             >
               Login
             </button>
           </form>
         </div>
 
-        {/* Back Button aligned with logo */}
         <div className="mt-9">
           <Link to="/">
             <button
@@ -175,9 +168,8 @@ export default function LoginPage() {
           </Link>
         </div>
       </div>
-
-      {/* Left side: Testimonials slider */}
-      <div className="w-full md:w-[60%] py-2 bg-white">
+      {/* Right side: Login Form */}
+      <div className="w-full md:w-3/5 py-2 pr-0 md:pr-2 bg-white">
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
           style={{
@@ -192,7 +184,7 @@ export default function LoginPage() {
               Testimonials
             </h2>
             <div className="p-2 transition duration-500 ease-in-out">
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4 justify-center">
                 <img
                   src={testimonials[activeIndex].photo}
                   alt="Avatar"
@@ -206,7 +198,7 @@ export default function LoginPage() {
                 <p className="text-gray-900 font-medium">
                   {testimonials[activeIndex].name}
                 </p>
-                <p className="text-xs text-[#080A16]" style={{ opacity: 0.6 }}>
+                <p className="text-xs text-[#080A16] opacity-60">
                   {testimonials[activeIndex].position}
                 </p>
               </div>

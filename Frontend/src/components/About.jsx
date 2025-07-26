@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="relative bg-light font-sans antialiased">
+    <div className="relative bg-light font-sans antialiased overflow-x-hidden">
       {/* Hero Section */}
       <section
         className="relative min-h-screen text-white overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('././src/assets/background.png')" }}
       >
         <Navbar />
-        <div className="min-h-[80vh] flex items-center px-4 md:px-16 text-white">
+        <div className="min-h-[80vh] flex items-center px-4 md:px-50 text-white">
           <motion.div
             className="max-w-3xl space-y-6"
             initial={{ opacity: 0, y: 40 }}
@@ -53,13 +53,11 @@ const About = () => {
             </h2>
           </div>
 
-          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] px-[50vw]">
-            <hr className="border-t border-gray-300 mb-10" />
-          </div>
+          <hr className="border-t border-gray-300 mb-10" />
 
-          <div className="flex flex-col lg:flex-row items-start gap-12">
+          <div className="flex flex-col lg:flex-row items-stretch gap-12">
             {/* Text Section */}
-            <div className="w-full lg:w-3/5 bg-white rounded-lg p-6 shadow-sm">
+            <div className="w-full lg:w-3/5 bg-white rounded-lg p-6 shadow-sm flex flex-col justify-between">
               <p className="text-gray-700 leading-relaxed text-base">
                 DsaBuddy was born out of a deep understanding that traditional
                 DSA learning methods—relying heavily on passive reading—often
@@ -85,7 +83,8 @@ const About = () => {
               <img
                 src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
                 alt="AI and DSA"
-                className="rounded-[10px] border border-black w-full h-full object-cover"
+                className="rounded-[10px] border border-black/30 w-full h-full object-cover max-h-[100%]"
+                style={{ minHeight: "100%" }}
               />
             </div>
           </div>

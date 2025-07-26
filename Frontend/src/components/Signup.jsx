@@ -174,7 +174,7 @@ export default function Signup() {
             <div className="flex flex-col md:flex-row gap-4">
               <div className="w-full md:w-1/2">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  First name
+                  First name<span className="text-red-500">*</span>
                 </label>
                 <div className="flex items-center border border-gray-300 rounded-md shadow-sm text-black px-3 py-2 focus-within:border-black">
                   <FaUserPlus className="text-gray-400 mr-2" />
@@ -190,7 +190,7 @@ export default function Signup() {
               </div>
               <div className="w-full md:w-1/2">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Last name
+                  Last name<span className="text-red-500">*</span>
                 </label>
                 <div className="flex items-center border border-gray-300 rounded-md shadow-sm text-black px-3 py-2 focus-within:border-black">
                   <FaUserPlus className="text-gray-400 mr-2" />
