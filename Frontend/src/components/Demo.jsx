@@ -166,7 +166,7 @@ Use the binary search algorithm.`;
                   }`}
                   disabled={hasSubmitted}
                 >
-                  Submit
+                  Ai Suggestion
                 </button>
               </div>
             </div>
