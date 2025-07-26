@@ -1,7 +1,7 @@
 import React from "react";
 import UserSidebar from "./UserSideBar";
 import QuestionCard from "./QuestionCard";
-
+import { Link } from "react-router-dom";
 const UserPanel = () => {
   const Question = {
     question: "Two Sum",
@@ -33,17 +33,19 @@ const UserPanel = () => {
       </main>
 
       {/* Contact a Mentor Floating Chat Bubble */}
-      <button
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 h-14 rounded-full shadow-xl bg-white/80 backdrop-blur-lg border border-gray-200 hover:scale-105 transition-transform duration-300 ease-in-out group text-sm font-medium text-gray-800"
-        aria-label="Contact a Mentor"
-      >
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/8524/8524923.png"
-          alt="Contact Mentor"
-          className="w-6 h-6"
-        />
-        Contact a Mentor
-      </button>
+      <Link to="/contact/mentor">
+          <button
+           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 h-14 rounded-full shadow-xl bg-white/80 backdrop-blur-lg border border-gray-200 hover:scale-105 transition-transform duration-300 ease-in-out group text-sm font-medium text-gray-800"
+          aria-label="Contact a Mentor"
+          >
+           <img
+            src="https://cdn-icons-png.flaticon.com/512/8524/8524923.png"
+            alt="Contact Mentor"
+            className="w-6 h-6"
+          />
+          Contact a Mentor
+        </button>
+      </Link>
     </div>
   );
 };

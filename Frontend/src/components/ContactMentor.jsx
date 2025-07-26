@@ -1,4 +1,6 @@
 import React from "react";
+import { TbArrowBackUp } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const ContactMentor = () => {
   return (
@@ -9,10 +11,26 @@ const ContactMentor = () => {
         fontFamily: '"Plus Jakarta Sans", "Noto Sans", sans-serif',
       }}
     >
+      {/* Contact Form Card */}
       <div className="w-full max-w-3xl px-6 py-10 bg-white bg-opacity-80 backdrop-blur-sm rounded-xl shadow-lg">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#141414] text-left mb-6 px-2">
-          Contact Your Mentor
-        </h2>
+        {/* Container for back button and heading */}
+        <div className="flex justify-between items-center mb-6 px-2 space-x-4">
+          {/* Back Button */}
+          {/* Title */}
+          <h2 className="text-2xl md:text-3xl font-bold text-[#141414] text-left">
+            Contact A Mentor
+          </h2>
+          <Link to="/user/home">
+            <button
+              type="button"
+              className="flex items-center gap-1 border-none text-gray-700 hover:text-black text-sm bg-white/700 px-3 py-1 
+              "
+            >
+              <TbArrowBackUp className="text-lg" />
+              Back
+            </button>
+          </Link>
+        </div>
 
         <div className="px-2 mb-4">
           <label className="block w-full">
