@@ -12,7 +12,7 @@ export const checkAnswer = async (req, res) => {
           {
             parts: [
               {
-                text: `You are an intelligent productivity assistant. Based on the task description, question and code provided, generate 3–5 smart, helpful suggestions that can help the user break down, improve, or approach the task more effectively. The suggestions should be Simple and clear, Actionable, Relevant to the task, Written in plain, helpful language. Question: ${question}, Task Description: ${description}, Code: ${code} Give your suggestion.`,
+                text: `You are an intelligent productivity assistant. Based on the task description, question and code provided, suggest users about their code. The suggestions should be Simple and clear, Actionable, Relevant to the task, Written in plain, helpful language. Question: ${question}, Task Description: ${description}, Code: ${code} Give your suggestion. The pattern of the reply should be like: "Error in line 5. Suggestion: You wrote System.out.printlm() instead of System.out.println(). Do not r"`,
               },
             ],
           },
