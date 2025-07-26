@@ -4,6 +4,8 @@ import adminSlice from "./adminSlice.js";
 import coursesSlice from "./coursesSlice.js";
 import courseSlice from "./courseSlice.js";
 import messageSlice from "./messageSlice.js";
+import questionsSlice from "./questionsSlice.js";
+import questionSlice from "./questionSlice.js";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ const store = configureStore({
     Courses: coursesSlice,
     Course: courseSlice,
     Message: messageSlice,
+    Questions: questionsSlice,
+    Question: questionSlice
   },
 });
 
