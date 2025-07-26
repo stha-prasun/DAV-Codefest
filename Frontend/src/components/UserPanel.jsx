@@ -1,17 +1,26 @@
 import React, { useEffect } from "react";
 import UserSidebar from "./UserSideBar";
 import QuestionCard from "./QuestionCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useGetAllQuestions from "../hooks/useGetAllQuestions";
 const UserPanel = () => {
+  const navigate = useNavigate();
+
+  const loggedInUser = useSelector((store) => store?.User?.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
+
   const fetchQuestions = useGetAllQuestions();
 
   useEffect(() => {
     fetchQuestions();
   }, []);
 
-  const loggedInUser = useSelector((store) => store?.User.loggedInUser);
   const Questions = useSelector((store) => store?.Questions?.Questions);
 
   return (

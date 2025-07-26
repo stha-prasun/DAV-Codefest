@@ -1,11 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import Navbar from "./shared/Navbar";
 import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const loggedInUser = useSelector((store) => store.User.loggedInUser);
+  const navigate = useNavigate();
+
+  const loggedInUser = useSelector((store) => store?.User?.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
+
   const firstName = loggedInUser?.fullname?.trim().split(" ")[0] || "XYZ";
 
   const fields = [

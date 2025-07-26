@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import Navbar from "./shared/Navbar";
 import Footer from "./shared/Footer";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { AI_API_ENDPOINT } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Dsa = () => {
+  const navigate = useNavigate();
+
+  const loggedInUser = useSelector((store) => store?.User?.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
+
   const Question = useSelector((store) => store.Question.Question);
   const [suggestion, setSuggestion] = useState(
     "AI Suggestion Will Appear Here"

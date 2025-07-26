@@ -4,8 +4,19 @@ import UserCourseCard from "./UserCourseCard";
 import { useEffect } from "react";
 import useGetAllCourses from "../hooks/useGetAllCourses";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
+  const navigate = useNavigate();
+
+  const loggedInUser = useSelector((store) => store?.User?.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
+  
   const fetchCourses = useGetAllCourses();
 
   useEffect(() => {

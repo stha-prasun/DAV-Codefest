@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TbArrowBackUp } from "react-icons/tb";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { MESSAGE_API_ENDPOINT } from "../utils/constants";
 
 const ContactMentor = () => {
-  const loggedInUser = useSelector((store)=>store?.User?.loggedInUser);
+  const navigate = useNavigate();
+
+  const loggedInUser = useSelector((store) => store?.User?.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,10 +29,14 @@ const ContactMentor = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${MESSAGE_API_ENDPOINT}/new`, {
-        message,
-        id: loggedInUser?._id,
-      }, {withCredentials: true});
+      const response = await axios.post(
+        `${MESSAGE_API_ENDPOINT}/new`,
+        {
+          message,
+          id: loggedInUser?._id,
+        },
+        { withCredentials: true }
+      );
 
       if (response.data?.success) {
         toast.success(response.data.message);
@@ -72,7 +84,7 @@ const ContactMentor = () => {
             <textarea
               placeholder="Write your message here"
               className="w-full resize-none rounded-xl border border-gray-300 bg-neutral-50 text-[#141414] p-4 h-36 text-base placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-black"
-              value={message} 
+              value={message}
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </label>

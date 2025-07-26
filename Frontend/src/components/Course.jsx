@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 
 const Course = () => {
+  const navigate = useNavigate();
+
+  const loggedInUser = useSelector((store) => store?.User?.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
+
   const course = useSelector((store) => store.Course.Course);
   const [activeTab, setActiveTab] = useState("overview");
 
@@ -71,9 +81,7 @@ const Course = () => {
 
           {/* Sidebar Course Details */}
           <div className="lg:w-[350px] w-full bg-gray-100 shadow-lg rounded-xl p-6 space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Course Details
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800">Course Details</h2>
             {`${course?.details}`}
           </div>
         </div>

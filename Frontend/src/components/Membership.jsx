@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./shared/Navbar";
 import Footer from "./shared/Footer";
 import { useSelector } from "react-redux";
@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom";
 const Membership = () => {
   const navigate = useNavigate();
   const loggedInUser = useSelector((store) => store?.User.loggedInUser);
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/");
+    }
+  }, []);
 
   const handleClick = async () => {
     try {
@@ -30,18 +36,19 @@ const Membership = () => {
   };
 
   return (
-    <div style={{
-          backgroundImage: "url('/background-membership.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "top",
-          backgroundRepeat: "no-repeat",
-        }}>
+    <div
+      style={{
+        backgroundImage: "url('/background-membership.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "top",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Navbar with background image only */}
       <Navbar />
 
       {/* Membership Content */}
-      <div className="min-h-screen text-black flex items-center justify-center py-10 px-4"
-      >
+      <div className="min-h-screen text-black flex items-center justify-center py-10 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
           {/* Free Membership Card */}
           <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-md flex flex-col">
