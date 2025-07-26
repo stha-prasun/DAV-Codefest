@@ -18,6 +18,7 @@ import Courses from "./components/Courses";
 import AddQuestionForm from "./components/admin/AddQuestionForm";
 import EditCourseForm from "./components/admin/EditCourseForm";
 import AdminQuestions from "./components/admin/AdminQuestions";
+import AdminLogin from "./components/admin/AdminLogin";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -74,6 +75,10 @@ const App = () => {
       element: <Courses />,
     },
     // Admin Part
+    {
+      path: "/admin/login",
+      element: <AdminLogin />,
+    },
     {
       path: "/admin/home",
       element: <AdminPanel />,
