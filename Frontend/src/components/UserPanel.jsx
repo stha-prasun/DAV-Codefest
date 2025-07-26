@@ -19,8 +19,8 @@ const UserPanel = () => {
       <UserSidebar />
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-50 p-6 overflow-y-auto min-h-screen">
-        <h2 className="text-2xl font-medium text-[#080A16] mb-4">
+      <main className="flex-1 bg-gray-50 p-6 overflow-y-auto min-h-screen sm:ml-64">
+        <h2 className="text-2xl font-medium text-[#080A16] mb-4 lg:ml-0 sm:ml-60 ml-10">
           Welcome, {`${loggedInUser?.fullname}`}
         </h2>
 
