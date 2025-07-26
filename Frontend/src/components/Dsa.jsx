@@ -43,7 +43,7 @@ const Dsa = () => {
     >
       <Navbar />
       <div
-        className="p-6 min-h-screen  flex flex-col"
+        className="p-4 sm:p-6 min-h-screen flex flex-col"
         style={{
           minHeight: "100vh",
           backgroundImage: "url('/background.png-dsa')",
@@ -52,15 +52,15 @@ const Dsa = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="flex gap-6 flex-grow h-full">
+        <div className="flex flex-col lg:flex-row gap-6 flex-grow h-full">
           {/* Left Panel */}
-          <div className="left w-[60%] flex flex-col rounded-xl gap-6">
+          <div className="left w-full lg:w-[60%] flex flex-col rounded-xl gap-6">
             {/* Top Left: Question Panel */}
-            <div className="top-left flex-1 p-6 overflow-y-auto bg-white rounded-lg border border-gray-200 shadow-sm">
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+            <div className="top-left flex-1 p-4 sm:p-6 overflow-y-auto bg-white rounded-lg border border-gray-200 shadow-sm">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800">
                 {Question.question}
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line text-sm sm:text-base">
                 {Question.description}
               </p>
             </div>
@@ -70,13 +70,9 @@ const Dsa = () => {
               <h3 className="text-lg font-semibold text-gray-700 mb-2 shrink-0">
                 AI Suggestions
               </h3>
-
-              {/* Suggestion Text */}
               <div className="bg-[#f9f9f9] p-3 rounded-md shadow-inner text-sm text-gray-700 overflow-y-auto flex-grow">
                 {suggestion}
               </div>
-
-              {/* Suggestion Button aligned to bottom right */}
               <div className="mt-3 flex justify-end shrink-0">
                 <button
                   type="button"
@@ -90,13 +86,11 @@ const Dsa = () => {
           </div>
 
           {/* Right Panel: Monaco Editor */}
-          <div className="right w-[40%] p-6 border border-gray-300 rounded-lg bg-white flex flex-col">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <div className="right w-full lg:w-[40%] p-4 sm:p-6 border border-gray-300 rounded-lg bg-white flex flex-col">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">
               Code Editor
             </h2>
-
-            {/* Editor Box with padding */}
-            <div className="flex-grow overflow-hidden mb-4 p-4">
+            <div className="flex-grow overflow-hidden mb-4 p-2 sm:p-4">
               <Editor
                 height="100%"
                 defaultLanguage="java"
@@ -109,8 +103,6 @@ const Dsa = () => {
                 }}
               />
             </div>
-
-            {/* Submit Button aligned right */}
             <div className="flex justify-end">
               <button
                 onClick={handleSuggestionClick}
