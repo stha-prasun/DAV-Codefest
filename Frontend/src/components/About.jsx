@@ -11,7 +11,7 @@ const About = () => {
       {/* Hero Section */}
       <section
         className="relative min-h-screen text-white overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('././src/assets/background.png')" }}
+        style={{ backgroundImage: "url('/background.png')" }}
       >
         <Navbar />
         <div className="min-h-[80vh] flex items-center px-4 md:px-50 text-white">
@@ -105,7 +105,7 @@ const About = () => {
               {/* Card 1 */}
               <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full sm:w-72 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="flex items-center justify-center mx-auto w-16 h-16 bg-primary-100 rounded-full mb-5">
-                  <Code2 className="w-7 h-7 text-[#546eff] group-hover:scale-110 transition-transform duration-300" />
+                  <Code2 className="w-7 h-7 text-[#080A16] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="font-semibold text-lg text-[#080A16] mb-2">
                   Practice-Oriented
@@ -119,7 +119,7 @@ const About = () => {
               {/* Card 2 */}
               <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full sm:w-72 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="flex items-center justify-center mx-auto w-16 h-16 bg-primary-100 rounded-full mb-5">
-                  <Bot className="w-7 h-7 text-[#546eff] group-hover:scale-110 transition-transform duration-300" />
+                  <Bot className="w-7 h-7 text-[#080A16] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="font-semibold text-lg text-[#080A16] mb-2">
                   AI-Powered Help
@@ -133,7 +133,7 @@ const About = () => {
               {/* Card 3 */}
               <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full sm:w-72 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="flex items-center justify-center mx-auto w-16 h-16 bg-primary-100 rounded-full mb-5">
-                  <Gauge className="w-7 h-7 text-[#546eff] group-hover:scale-110 transition-transform duration-300" />
+                  <Gauge className="w-7 h-7 text-[#080A16] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="font-semibold text-lg text-[#080A16] mb-2">
                   Efficient Learning

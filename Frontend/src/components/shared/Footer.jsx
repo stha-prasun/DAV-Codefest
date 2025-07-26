@@ -15,7 +15,7 @@ const Footer = () => {
         >
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="././src/assets/logo.png"
+              src="/logo.png"
               alt="DsaBuddy Logo"
               className="w-8 h-8 object-contain"
             />

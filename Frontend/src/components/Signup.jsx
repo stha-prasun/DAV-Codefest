@@ -77,7 +77,7 @@ export default function Signup() {
         <div
           className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center"
           style={{
-            backgroundImage: "url('././src/assets/login-background.png')",
+            backgroundImage: "url('/login-background.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             padding: "2rem",
@@ -127,7 +127,7 @@ export default function Signup() {
       <div className="flex flex-col w-full md:w-2/5 px-8 md:px-12 py-8 bg-white">
         <div className="flex justify-between items-center mb-12">
           <img
-            src="././src/assets/logo_black.png"
+            src="/logo_black.png"
             alt="logo"
             className="h-7 w-auto"
           />

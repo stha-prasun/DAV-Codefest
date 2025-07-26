@@ -6,31 +6,31 @@ const teamMembers = [
     name: "Prasun Shrestha",
     role: "Backend",
     desc: "Prasun builds scalable backend systems and ensures smooth data flow between services and databases.",
-    image: "src/assets/Prasun_Team.JPG",
+    image: "/Prasun_Team.jpg",
   },
   {
     name: "Niraj Kushwaha",
     role: "Backend",
     desc: "Niraj focuses on server-side architecture and writes clean, efficient, and maintainable backend code.",
-    image: "src/assets/Niraj_Team.JPG",
+    image: "/Niraj_Team.jpg",
   },
   {
     name: "Prishma Dahal",
     role: "UI/UX Designer",
     desc: "Prishma designs and develops intuitive interfaces that provide users with seamless digital experiences.",
-    image: "src/assets/Prishma_Team.JPG",
+    image: "/Prishma_Team.JPG",
   },
   {
     name: "Rohan Shrestha",
     role: "UI/UX Designer / Frontend",
     desc: "Rohan creates thoughtful and engaging UI/UX designs that prioritize user needs and visual clarity.",
-    image: "src/assets/Rohan_Team.JPG",
+    image: "/Rohan_Team.jpg",
   },
   {
     name: "Aarav Bhattarai",
     role: "Frontend",
     desc: "Aarav implements responsive frontends using modern tools, ensuring performance and accessibility.",
-    image: "src/assets/Aarav_Team.JPG",
+    image: "/Aarav_Team.JPG",
   },
 ];
 

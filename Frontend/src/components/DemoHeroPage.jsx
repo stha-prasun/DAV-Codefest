@@ -30,7 +30,7 @@ const DemoHeroPage = () => {
       <div
         style={{
           minHeight: "100vh",
-          backgroundImage: "url('././src/assets/background.png')",
+          backgroundImage: "url('/background.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
