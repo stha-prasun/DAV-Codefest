@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { USER_API_ENDPOINT } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Membership = () => {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ const Membership = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
           {/* Free Membership Card */}
           <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-md flex flex-col">
+            <Link to="/user/home">
+            {"Back"}
+            </Link>
             <h2 className="text-2xl font-semibold mb-4 text-center">
               Free Plan
             </h2>
@@ -67,6 +71,9 @@ const Membership = () => {
 
           {/* Premium Membership Card */}
           <div className="border border-black bg-white text-black rounded-lg p-6 shadow-lg flex flex-col justify-between">
+            <Link to="/user/home">
+            {"Back"}
+            </Link>
             <div>
               <h2 className="text-2xl font-semibold mb-4 text-center">
                 Premium Plan
@@ -76,7 +83,6 @@ const Membership = () => {
                 <li>✔ One-on-one mentorship</li>
                 <li>✔ Downloadable resources</li>
                 <li>✔ Priority support</li>
-                <li>✔ Monthly Q&A sessions</li>
               </ul>
             </div>
             <button

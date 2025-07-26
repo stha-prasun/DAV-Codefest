@@ -45,7 +45,7 @@ const Profile = () => {
         }}
       >
         <div className="bg-white shadow-xl rounded-2xl w-full max-w-md sm:w-[480px] p-6 sm:p-8">
-          <Link to="/">
+          <Link to="/user/home">
             <button
               type="button"
               className="flex items-center text-gray-500 hover:text-gray-700 text-base font-normal"

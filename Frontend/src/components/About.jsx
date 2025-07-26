@@ -96,7 +96,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-semibold text-[#080A16] mb-6 tracking-tight">
               Our Mission
             </h2>
-            <p className="text-lg text-gray-700 mb-20 font-light max-w-3xl mx-auto">
+            <p className="text-lg text-gray-700 mb-20 font-light max-w-3xl mx-auto italic">
               “To make DSA learning efficient and enjoyable by blending real
               coding challenges with real-time AI feedback and mentorship.”
             </p>
@@ -105,7 +105,7 @@ const About = () => {
               {/* Card 1 */}
               <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full sm:w-72 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="flex items-center justify-center mx-auto w-16 h-16 bg-primary-100 rounded-full mb-5">
-                  <Code2 className="w-7 h-7 text-[#080A16] group-hover:scale-110 transition-transform duration-300" />
+                  <Code2 className="w-7 h-7 text-[#546eff] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="font-semibold text-lg text-[#080A16] mb-2">
                   Practice-Oriented
@@ -119,7 +119,7 @@ const About = () => {
               {/* Card 2 */}
               <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full sm:w-72 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="flex items-center justify-center mx-auto w-16 h-16 bg-primary-100 rounded-full mb-5">
-                  <Bot className="w-7 h-7 text-[#080A16] group-hover:scale-110 transition-transform duration-300" />
+                  <Bot className="w-7 h-7 text-[#546eff] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="font-semibold text-lg text-[#080A16] mb-2">
                   AI-Powered Help
@@ -133,7 +133,7 @@ const About = () => {
               {/* Card 3 */}
               <div className="group bg-white p-6 sm:p-8 rounded-2xl shadow-lg w-full sm:w-72 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div className="flex items-center justify-center mx-auto w-16 h-16 bg-primary-100 rounded-full mb-5">
-                  <Gauge className="w-7 h-7 text-[#080A16] group-hover:scale-110 transition-transform duration-300" />
+                  <Gauge className="w-7 h-7 text-[#546eff] group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="font-semibold text-lg text-[#080A16] mb-2">
                   Efficient Learning

@@ -75,7 +75,7 @@ const MessageCard = ({ message }) => {
         onClick={handleClick}
           className="text-sm px-4 py-2 bg-[#080A16] hover:bg-[#0c1756] text-white rounded-md transition-colors duration-200"
         >
-          Accept
+          {message.isSolved ? "Accepted" : "Accept"}
         </button>
       </div>
     </div>

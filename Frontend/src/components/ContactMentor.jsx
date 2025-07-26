@@ -41,6 +41,7 @@ const ContactMentor = () => {
       if (response.data?.success) {
         toast.success(response.data.message);
         setMessage("");
+        navigate("/user/home");
       }
     } catch (error) {
       console.error(error);
