@@ -124,6 +124,13 @@ export const buyMembership = async (req, res) => {
       });
     }
 
+    if(user.isPremium){
+      return res.status(400).json({
+        message: "Premium Membership Already Activated",
+        success: false
+      })
+    }
+
     user.isPremium = true;
     await user.save();
 
