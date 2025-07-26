@@ -24,13 +24,17 @@ const AddQuestionForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${QUESTIONS_API_ENDPOINT}/add`, {
-        question: formData.question,
-        description: formData.description,
-        difficulty: formData.difficulty
-      }, { withCredentials: true });
+      const res = await axios.post(
+        `${QUESTIONS_API_ENDPOINT}/add`,
+        {
+          question: formData.question,
+          description: formData.description,
+          difficulty: formData.difficulty,
+        },
+        { withCredentials: true }
+      );
 
-      if(res.data.success){
+      if (res.data.success) {
         toast.success(res.data.message);
         navigate("/admin/home");
       }
@@ -57,13 +61,13 @@ const AddQuestionForm = () => {
             Add New Question
           </h2>
           <div className="flex justify-between items-center mb-8">
-                    <Link to="/admin/questions">
-                      <button className="flex items-center gap-1 text-white hover:text-gray-300 text-sm">
-                        <TbArrowBackUp className="text-lg" />
-                        Back
-                      </button>
-                    </Link>
-                  </div>
+            <Link to="/admin/questions">
+              <button className="flex items-center gap-1 text-white hover:text-gray-300 text-sm">
+                <TbArrowBackUp className="text-lg" />
+                Back
+              </button>
+            </Link>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-white">
