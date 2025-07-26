@@ -5,9 +5,10 @@ import axios from "axios";
 import { COURSE_API_ENDPOINT } from "../../utils/constants";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+
 const EditCourseForm = () => {
   const navigate = useNavigate();
-  const course = useSelector((store)=>store.Course.Course);
+  const course = useSelector((store) => store.Course.Course);
 
   const [formData, setFormData] = useState({
     id: course._id,
@@ -47,107 +48,73 @@ const EditCourseForm = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Update failed");
     }
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4">
-      {/* Background Image */}
+    <div className="relative min-h-screen flex items-center justify-center bg-cover bg-center px-4 py-16">
+      {/* Background */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
+        className="absolute inset-0 z-0"
         style={{
           backgroundImage: "url('/background-dsa.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Add a semi-transparent overlay to darken the background slightly */}
-        <div className="w-full h-full bg-black/20 bg-opacity-10"></div>
+        <div className="w-full h-full bg-black/30 backdrop-blur-sm"></div>
       </div>
 
-      {/* Glassy Form Container */}
-      <div className="relative z-10 max-w-2xl w-full bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl rounded-xl p-8">
-        <div className="flex justify-between items-center mb-6 px-2 space-x-4">
-          {/* Back Button */}
-          {/* Title */}
-          <h2 className="text-3xl font-bold text-white mb-4">Edit Course</h2>
+      {/* Form Container */}
+      <div className="relative z-10 w-full max-w-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl rounded-xl px-6 py-10 md:px-10">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold text-white">Edit Course</h2>
           <Link to="/admin/home">
-            <button
-              type="button"
-              className="flex items-center gap-1 border-none text-gray-400 hover:text-gray-500 text-sm bg-white/700 px-3 py-1 
-              "
-            >
+            <button className="flex items-center gap-1 text-white hover:text-gray-300 text-sm">
               <TbArrowBackUp className="text-lg" />
               Back
             </button>
           </Link>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 text-white">
-          {/* Title */}
-          <div>
-            <label className="block font-medium mb-1">Title</label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              className="w-full border border-white/40 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 rounded p-2"
-              placeholder="Course title"
-            />
-          </div>
+        <form onSubmit={handleSubmit} className="space-y-5 text-white">
+          {["title", "subtitle"].map((field) => (
+            <div key={field}>
+              <label className="block font-medium mb-1 capitalize">
+                {field}
+              </label>
+              <input
+                type="text"
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                className="w-full border border-white/40 bg-white/10 text-white placeholder-white/60 rounded p-2 backdrop-blur-sm"
+                placeholder={`Enter ${field}`}
+              />
+            </div>
+          ))}
 
-          {/* Subtitle */}
-          <div>
-            <label className="block font-medium mb-1">Subtitle</label>
-            <input
-              type="text"
-              name="subtitle"
-              value={formData.subtitle}
-              onChange={handleChange}
-              className="w-full border border-white/40 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 rounded p-2"
-              placeholder="Course subtitle"
-            />
-          </div>
-
-          {/* Overview */}
-          <div>
-            <label className="block font-medium mb-1">Overview</label>
-            <textarea
-              name="overview"
-              value={formData.overview}
-              onChange={handleChange}
-              className="w-full border border-white/40 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 rounded p-2 h-24"
-              placeholder="Brief course overview"
-            ></textarea>
-          </div>
-
-          {/* FAQ */}
-          <div>
-            <label className="block font-medium mb-1">FAQ</label>
-            <textarea
-              name="faq"
-              value={formData.faq}
-              onChange={handleChange}
-              className="w-full border border-white/40 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 rounded p-2 h-24"
-              placeholder="Frequently asked questions"
-            ></textarea>
-          </div>
-
-          {/* Details */}
-          <div>
-            <label className="block font-medium mb-1">Details</label>
-            <textarea
-              name="details"
-              value={formData.details}
-              onChange={handleChange}
-              className="w-full border border-white/40 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 rounded p-2 h-32"
-              placeholder="Course details"
-            ></textarea>
-          </div>
+          {["overview", "faq", "details"].map((field) => (
+            <div key={field}>
+              <label className="block font-medium mb-1 capitalize">
+                {field}
+              </label>
+              <textarea
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                rows={field === "details" ? 6 : 4}
+                className="w-full border border-white/40 bg-white/10 text-white placeholder-white/60 rounded p-2 backdrop-blur-sm"
+                placeholder={`Enter ${field}`}
+              ></textarea>
+            </div>
+          ))}
 
           <button
             type="submit"
-            className="text-sm px-6 py-2 mt-2 bg-[#080A16] hover:bg-[#0c1756] text-white rounded-md"
+            className="text-sm px-6 py-2 bg-[#080A16] hover:bg-[#0c1756] text-white rounded-md"
           >
             Submit
           </button>
