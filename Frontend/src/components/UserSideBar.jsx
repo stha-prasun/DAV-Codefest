@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import { BookOpen, Home, LogOut, User } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const UserSidebar = () => {
-    const navigate = useNavigate();
-    const loggedInUser = useSelector((store)=>store.User.loggedInUser);
+  const navigate = useNavigate();
+  const loggedInUser = useSelector((store) => store.User.loggedInUser);
 
   const handleLogout = () => {};
 
@@ -27,13 +27,15 @@ const UserSidebar = () => {
             <span>Home</span>
           </Link>
 
-          <Link
-            to="/user/courses"
-            className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
-          >
-            <BookOpen className="w-5 h-5" />
-            <span>Courses</span>
-          </Link>
+          {loggedInUser?.isPremium && (
+            <Link
+              to="/user/courses"
+              className="flex items-center space-x-3 hover:bg-[#0c1756] p-3 rounded cursor-pointer transition"
+            >
+              <BookOpen className="w-5 h-5" />
+              <span>Courses</span>
+            </Link>
+          )}
 
           <Link
             to={`/profile/${loggedInUser?._id}`}
@@ -56,6 +58,6 @@ const UserSidebar = () => {
       </aside>
     </div>
   );
-}
+};
 
-export default UserSidebar
+export default UserSidebar;

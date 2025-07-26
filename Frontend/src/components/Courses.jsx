@@ -10,8 +10,8 @@ const Courses = () => {
 
   useEffect(() => {
     fetchCourses();
-  }, [])
-  
+  }, []);
+
   const courses = useSelector((store) => store?.Courses.courses);
 
   return (
@@ -29,8 +29,22 @@ const Courses = () => {
             <div className="text-xl font-medium text-gray-700 mb-4">
               Courses
             </div>
+
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <UserCourseCard title={`${courses?.title}`} description="By DSA Buddy" id={`${courses?._id}`} />
+              {courses?.length > 0 ? (
+                courses.map((course) => (
+                  <UserCourseCard
+                    key={course._id}
+                    title={course.title}
+                    description="By DSA Buddy"
+                    id={course._id}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-500 col-span-full">
+                  No courses available.
+                </p>
+              )}
             </div>
           </div>
         </section>
