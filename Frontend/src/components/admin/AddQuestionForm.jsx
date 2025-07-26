@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
+import { QUESTIONS_API_ENDPOINT } from "../../utils/constants";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const AddQuestionForm = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     question: "",
     description: "",
     difficulty: "Easy",
   });
-
-  const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -19,17 +21,22 @@ const AddQuestionForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { question, description, difficulty } = formData;
+    try {
+      const res = await axios.post(`${QUESTIONS_API_ENDPOINT}/add`, {
+        question: formData.question,
+        description: formData.description,
+        difficulty: formData.difficulty
+      }, { withCredentials: true });
 
-    if (!question || !description || !difficulty) {
-      setError("All fields are required.");
-      setSuccessMessage("");
-    } else {
-      setError("");
-      setSuccessMessage("Question Added Successfully");
-      console.log("Question Data:", formData);
+      if(res.data.success){
+        toast.success(res.data.message);
+        navigate("/admin/home");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -59,11 +66,6 @@ const AddQuestionForm = () => {
             </button>
           </Link>
         </div>
-
-        {error && <p className="text-red-500 mb-2">{error}</p>}
-        {successMessage && (
-          <p className="text-green-400 mb-2">{successMessage}</p>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4 text-white">
           {/* Question */}
