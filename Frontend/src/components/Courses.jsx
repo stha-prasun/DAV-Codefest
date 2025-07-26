@@ -12,7 +12,7 @@ const Courses = () => {
     fetchCourses();
   }, []);
 
-  const courses = useSelector((store) => store?.Courses.courses);
+  const courses = useSelector((store) => store?.Courses.Courses);
 
   return (
     <div className="min-h-screen flex">
