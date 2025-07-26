@@ -2,8 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import Navbar from "./shared/Navbar";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const loggedInUser = useSelector((store) => store.User.loggedInUser);
+  const firstName = loggedInUser?.fullname?.trim().split(" ")[0] || "XYZ";
+
+  const fields = [
+    { label: "Profile Name", type: "text", value: loggedInUser?.fullname || "" },
+    { label: "Username", type: "text", value: loggedInUser?.fullname || "" },
+    { label: "Email", type: "email", value: loggedInUser?.email || "" },
+  ];
+
   return (
     <>
       {/* Navbar fixed on top of background */}
@@ -41,30 +51,22 @@ const Profile = () => {
             <div
               className="w-26 h-26 rounded-full bg-cover bg-center mt-2"
               style={{
-                backgroundImage:
-                  `url(https://avatar.iran.liara.run/username?username=Scott+Wilson)`,
+                backgroundImage: `url(https://avatar.iran.liara.run/username?username=${firstName})`,
               }}
             ></div>
           </div>
 
           {/* Form */}
-          {[
-            { label: "Profile Name", type: "text" },
-            { label: "Username", type: "text" },
-            { label: "Email", type: "email" },
-          ].map((field, idx) => (
+          {fields.map((field, idx) => (
             <div key={idx} className="flex max-w-[480px] flex-wrap gap-4 py-3">
               <label className="flex flex-col flex-1 min-w-40">
-                <p className="text-base font-medium text-[#121416] pb-2">
-                  {field.label}
-                </p>
+                <p className="text-base font-medium text-[#121416] pb-2">{field.label}</p>
 
                 <input
                   type={field.type}
-                  value={""}
+                  value={field.value}
                   readOnly
                   className="form-input w-full flex-1 rounded-xl border border-[#dde1e3] bg-white text-[#121416] p-[15px] h-10 placeholder:text-[#6a7681] text-base leading-normal focus:outline-none focus:ring-0 focus:border-[#dde1e3]"
-                  defaultValue=""
                 />
               </label>
             </div>
