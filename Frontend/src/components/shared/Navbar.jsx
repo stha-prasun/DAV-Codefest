@@ -88,7 +88,7 @@ const Navbar = () => {
                 to="/demo"
                 className="hover:text-gray-300 transition-colors font-normal"
               >
-                Product
+                Demo
               </Link>
             </li>
             <li>
