@@ -14,6 +14,7 @@ import Dsa from "./components/DSA";
 import Demo from "./components/Demo";
 import About from "./components/About"; 
 import AddCourseForm from "./components/admin/AddCourseForm";
+import Courses from "./components/Courses";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -64,6 +65,10 @@ const App = () => {
     {
       path: "/demo",
       element: <Demo />,
+    },
+    {
+      path: "/user/courses",
+      element: <Courses />,
     },
     // Admin Part
     {
